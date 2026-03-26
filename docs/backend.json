@@ -1,0 +1,287 @@
+{
+  "entities": {
+    "UserProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserProfile",
+      "type": "object",
+      "description": "Represents the personal information and contact details of the portfolio owner, Vini Rosário.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the UserProfile entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The full name of the portfolio owner."
+        },
+        "aboutMeText": {
+          "type": "string",
+          "description": "The biographical text describing Vini Rosário's story and artistic vision."
+        },
+        "profilePictureUrl": {
+          "type": "string",
+          "description": "URL to the stylized profile picture of Vini Rosário.",
+          "format": "uri"
+        },
+        "email": {
+          "type": "string",
+          "description": "Contact email address for Vini Rosário.",
+          "format": "email"
+        },
+        "linkedinUrl": {
+          "type": "string",
+          "description": "URL to Vini Rosário's LinkedIn profile.",
+          "format": "uri"
+        },
+        "githubUrl": {
+          "type": "string",
+          "description": "URL to Vini Rosário's GitHub profile.",
+          "format": "uri"
+        },
+        "instagramUrl": {
+          "type": "string",
+          "description": "URL to Vini Rosário's Instagram profile.",
+          "format": "uri"
+        },
+        "behanceUrl": {
+          "type": "string",
+          "description": "URL to Vini Rosário's Behance profile.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "aboutMeText",
+        "profilePictureUrl",
+        "email"
+      ]
+    },
+    "Skill": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Skill",
+      "type": "object",
+      "description": "Represents a specific skill or expertise possessed by Vini Rosário.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Skill entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the skill (e.g., 'Web Design', 'Motion Graphics')."
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Tool": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Tool",
+      "type": "object",
+      "description": "Represents a software, technology, or equipment used by Vini Rosário.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Tool entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the tool or technology (e.g., 'Adobe Photoshop', 'React')."
+        },
+        "iconUrl": {
+          "type": "string",
+          "description": "URL to the icon or image representing the tool.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "iconUrl"
+      ]
+    },
+    "PortfolioVideo": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "PortfolioVideo",
+      "type": "object",
+      "description": "Represents a video entry in Vini Rosário's portfolio gallery.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the PortfolioVideo entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the portfolio video."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the video content."
+        },
+        "videoUrl": {
+          "type": "string",
+          "description": "The URL where the video content is hosted (e.g., YouTube, Vimeo).",
+          "format": "uri"
+        },
+        "thumbnailUrl": {
+          "type": "string",
+          "description": "The URL to the thumbnail image for the video.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "videoUrl",
+        "thumbnailUrl"
+      ]
+    },
+    "ContactMessage": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContactMessage",
+      "type": "object",
+      "description": "Represents a message sent by a user through the portfolio's contact form.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ContactMessage entity."
+        },
+        "senderName": {
+          "type": "string",
+          "description": "The name of the person sending the message."
+        },
+        "senderEmail": {
+          "type": "string",
+          "description": "The email address of the person sending the message.",
+          "format": "email"
+        },
+        "messageContent": {
+          "type": "string",
+          "description": "The actual content of the message sent by the user."
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "The date and time when the message was sent.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "senderName",
+        "senderEmail",
+        "messageContent",
+        "timestamp"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/userProfile/{userProfileId}",
+        "definition": {
+          "entityName": "UserProfile",
+          "schema": {
+            "$ref": "#/backend/entities/UserProfile"
+          },
+          "description": "Stores the single UserProfile document for Vini Rosário's portfolio. It's publicly readable. The 'userProfileId' will likely be a fixed ID (e.g., 'mainProfile').",
+          "params": [
+            {
+              "name": "userProfileId",
+              "description": "The unique identifier for the user profile, expected to be a fixed ID like 'mainProfile'."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/skills/{skillId}",
+        "definition": {
+          "entityName": "Skill",
+          "schema": {
+            "$ref": "#/backend/entities/Skill"
+          },
+          "description": "A collection of Vini Rosário's skills. These documents are publicly readable and editable only by an authenticated administrator.",
+          "params": [
+            {
+              "name": "skillId",
+              "description": "The unique identifier for a specific skill."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/tools/{toolId}",
+        "definition": {
+          "entityName": "Tool",
+          "schema": {
+            "$ref": "#/backend/entities/Tool"
+          },
+          "description": "A collection of tools and technologies used by Vini Rosário. These documents are publicly readable and editable only by an authenticated administrator.",
+          "params": [
+            {
+              "name": "toolId",
+              "description": "The unique identifier for a specific tool."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/portfolioVideos/{videoId}",
+        "definition": {
+          "entityName": "PortfolioVideo",
+          "schema": {
+            "$ref": "#/backend/entities/PortfolioVideo"
+          },
+          "description": "A collection of video entries for Vini Rosário's portfolio gallery. These documents are publicly readable and editable only by an authenticated administrator.",
+          "params": [
+            {
+              "name": "videoId",
+              "description": "The unique identifier for a specific portfolio video."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/contactMessages/{messageId}",
+        "definition": {
+          "entityName": "ContactMessage",
+          "schema": {
+            "$ref": "#/backend/entities/ContactMessage"
+          },
+          "description": "A collection for messages submitted through the contact form. Any user can create a message. Only authenticated administrators can read or list these messages.",
+          "params": [
+            {
+              "name": "messageId",
+              "description": "The unique identifier for a specific contact message."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/roles_admin/{uid}",
+        "definition": {
+          "entityName": "AdminRole",
+          "schema": {
+            "$ref": "#/backend/entities/AdminRole"
+          },
+          "description": "A collection used for Database Access Control (DBAC) to identify administrators. The existence of a document with the user's UID here grants administrator privileges.",
+          "params": [
+            {
+              "name": "uid",
+              "description": "The Firebase Authentication UID of the user who holds the admin role."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The proposed Firestore structure prioritizes security, scalability, and debuggability by adhering to the core design principles and mandates. \n\n**Authorization Independence (CRITICAL):** All primary collections (`userProfile`, `skills`, `tools`, `portfolioVideos`, `contactMessages`, `roles_admin`) are top-level. This design inherently eliminates the need for `get()` calls in security rules to check parent document attributes for authorization. Each document, or the collection itself, contains all necessary information for its own authorization decisions. For example, `contactMessages` documents are self-contained with sender information, and admin roles are verified by checking an entry in the dedicated `/roles_admin/{uid}` collection, not by looking up data in a parent document. This simplifies rules significantly and enables atomic operations without complex dependencies.\n\n**QAPs (Rules are not Filters):**\n\n1.  **Publicly Accessible Content:** Collections like `/userProfile`, `/skills`, `/tools`, and `/portfolioVideos` are designed for public read access. All documents within these collections share the same security posture (publicly readable, admin editable). This allows for efficient `list` operations without requiring complex filtering logic in security rules. The rules simply grant `allow read, list: if true;` for public users, ensuring that `list` queries retrieve only authorized data.\n2.  **User-Submitted Content (Contact Messages):** The `/contactMessages` collection allows any unauthenticated user to `create` new messages. However, `read` and `list` operations are restricted to authenticated administrators. This is achieved by security rules that permit `allow create: if true;` and `allow read, list: if get(/databases/$(database)/documents/roles_admin/$(request.auth.uid)).exists();`. This clear segregation ensures that non-admin users cannot read or list messages, satisfying QAPs by preventing unintended data exposure through `list` operations.\n\n**Structural Segregation & Access Modeling:**\n*   **Private Data (Admin-Managed):** The `/userProfile` collection is a single-document collection holding the portfolio owner's details, editable only by an authenticated admin. Other data like `/skills`, `/tools`, and `/portfolioVideos` are also read-public, write-admin, maintaining homogeneous security.\n*   **Global Roles (DBAC):** An `/roles_admin/{uid}` collection is used to store administrator UIDs. The *existence* of a document at `/roles_admin/$(request.auth.uid)` grants admin privileges, adhering to the DBAC principle without relying on custom claims.\n*   **Clear Ownership:** For `contactMessages`, the `senderName` and `senderEmail` are embedded within each message, providing clarity on the message origin.\n\nThis architecture provides a clean separation of concerns, simplifies security rules, and ensures efficient data access while maintaining strong security guarantees."
+  }
+}
