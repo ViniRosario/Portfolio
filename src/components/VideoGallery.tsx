@@ -31,7 +31,6 @@ export function VideoGallery() {
     setTimeout(() => {
       setView(type);
       setExploding(null);
-      // Ensure we stay at the section level after transition
       const el = document.getElementById('gallery');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }, 600);
@@ -87,7 +86,6 @@ export function VideoGallery() {
           </div>
         </div>
         
-        {/* Sub-view background visual */}
         <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
       </section>
     );
@@ -120,12 +118,21 @@ export function VideoGallery() {
                 src={videoImage?.imageUrl || ""}
                 alt="Showreel Vídeo"
                 fill
-                className="object-cover contrast-125 saturate-150 group-hover:scale-110 transition-transform duration-1000 brightness-75 group-hover:brightness-100"
+                className="object-cover contrast-125 saturate-150 group-hover:scale-110 transition-transform duration-1000 brightness-50 group-hover:brightness-75"
                 data-ai-hint={videoImage?.imageHint}
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-white flex items-center justify-center rounded-full group-hover:scale-110 group-hover:bg-primary transition-all duration-300 shadow-xl group-hover:animate-pulse">
-                  <Play className="w-10 h-10 text-black fill-black" />
+              
+              {/* Preview Content on Cover */}
+              <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/40 group-hover:bg-black/20 transition-colors">
+                <div className="grid grid-cols-3 gap-4 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity">
+                  {VIDEO_CATEGORIES.map((cat) => (
+                    <div key={cat.id} className="border border-white/20 bg-white/5 flex flex-col items-center justify-center gap-2 p-2 group-hover:border-primary/50 transition-colors">
+                      <cat.icon size={24} className="text-white group-hover:text-primary transition-colors" />
+                      <span className="font-mono text-[8px] md:text-[10px] text-white/70 text-center uppercase tracking-tighter">
+                        {cat.title}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
               
@@ -137,7 +144,6 @@ export function VideoGallery() {
                 N
               </div>
             </div>
-            {/* Hover Glitch Effect Layer */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-primary mix-blend-overlay pointer-events-none transition-opacity" />
           </div>
 
@@ -154,12 +160,21 @@ export function VideoGallery() {
                 src={designImage?.imageUrl || ""}
                 alt="Arquivo Design"
                 fill
-                className="object-cover contrast-150 group-hover:scale-110 transition-transform duration-1000 brightness-75 group-hover:brightness-100"
+                className="object-cover contrast-150 group-hover:scale-110 transition-transform duration-1000 brightness-50 group-hover:brightness-75"
                 data-ai-hint={designImage?.imageHint}
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-white flex items-center justify-center group-hover:scale-110 group-hover:bg-accent transition-all duration-300 shadow-xl group-hover:animate-pulse rotate-45">
-                  <Search className="w-10 h-10 text-black -rotate-45" />
+
+              {/* Preview Content on Cover */}
+              <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/40 group-hover:bg-black/20 transition-colors">
+                <div className="grid grid-cols-3 gap-4 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity">
+                  {DESIGN_CATEGORIES.map((cat) => (
+                    <div key={cat.id} className="border border-white/20 bg-white/5 flex flex-col items-center justify-center gap-2 p-2 group-hover:border-accent/50 transition-colors">
+                      <cat.icon size={24} className="text-white group-hover:text-accent transition-colors" />
+                      <span className="font-mono text-[8px] md:text-[10px] text-white/70 text-center uppercase tracking-tighter">
+                        {cat.title}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -171,14 +186,12 @@ export function VideoGallery() {
                 D
               </div>
             </div>
-            {/* Hover Glitch Effect Layer */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-secondary mix-blend-overlay pointer-events-none transition-opacity" />
           </div>
 
         </div>
       </div>
 
-      {/* Dramatic Transition Overlay */}
       {exploding && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden pointer-events-none">
           <div className="absolute inset-0 bg-primary animate-pixel-burst" />
