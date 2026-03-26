@@ -10,13 +10,13 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     "id": "vini-profile",
     "description": "Foto de perfil oficial do Vini Rosário",
-    "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&h=800&auto=format&fit=crop",
+    "imageUrl": "https://drive.google.com/thumbnail?id=1kgONHYcScEEWFs7KFaPDirf-aYxm6hkI&sz=w1000",
     "imageHint": "man profile"
   },
   {
     "id": "capcut-icon",
     "description": "Logo oficial do CapCut",
-    "imageUrl": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=200&h=200&auto=format&fit=crop",
+    "imageUrl": "https://drive.google.com/thumbnail?id=1MPFuZCof_5rBIQ6amEMeUAeyKqdXtJXd&sz=w500",
     "imageHint": "video app icon"
   },
   {
