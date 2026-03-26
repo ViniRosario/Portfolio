@@ -7,9 +7,8 @@ import { cn } from '@/lib/utils';
 import { ArrowLeft, Film, Palette, Layers, Monitor, Play, Search } from 'lucide-react';
 
 const VIDEO_CATEGORIES = [
-  { id: 'v1', title: 'SHOWREELS', icon: Film, desc: 'A seleção dos meus melhores momentos.' },
-  { id: 'v2', title: 'SHORT EDITS', icon: Layers, desc: 'Vídeos dinâmicos para redes sociais.' },
-  { id: 'v3', title: 'LONG FORM', icon: Monitor, desc: 'Edições completas e narrativas.' },
+  { id: 'v1', title: 'SHORT EDITS', icon: Layers, desc: 'Vídeos dinâmicos para redes sociais.' },
+  { id: 'v2', title: 'LONG FORM', icon: Monitor, desc: 'Edições completas e narrativas.' },
 ];
 
 const DESIGN_CATEGORIES = [
@@ -60,7 +59,10 @@ export function VideoGallery() {
             <div className="h-1 w-24 bg-primary mt-4" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className={cn(
+            "grid grid-cols-1 gap-8",
+            categories.length === 2 ? "md:grid-cols-2 max-w-4xl mx-auto" : "md:grid-cols-3"
+          )}>
             {categories.map((cat) => (
               <div 
                 key={cat.id}
@@ -123,7 +125,10 @@ export function VideoGallery() {
               
               {/* Preview Content on Cover */}
               <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/40 group-hover:bg-black/20 transition-colors">
-                <div className="grid grid-cols-3 gap-4 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity">
+                <div className={cn(
+                  "grid gap-4 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity",
+                  VIDEO_CATEGORIES.length === 2 ? "grid-cols-2" : "grid-cols-3"
+                )}>
                   {VIDEO_CATEGORIES.map((cat) => (
                     <div key={cat.id} className="border border-white/20 bg-white/5 flex flex-col items-center justify-center gap-2 p-2 group-hover:border-primary/50 transition-colors">
                       <cat.icon size={24} className="text-white group-hover:text-primary transition-colors" />
@@ -140,7 +145,7 @@ export function VideoGallery() {
               </div>
               
               <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker -rotate-2">
-                SHOWREELS & VIDEO PROJECTS
+                VIDEO PROJECTS
               </div>
               
               <div className="absolute bottom-4 left-4 w-10 h-10 flex items-center justify-center bg-white text-black font-black text-2xl border-2 border-black">
