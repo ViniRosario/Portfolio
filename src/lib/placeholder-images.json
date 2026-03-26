@@ -7,6 +7,18 @@
       "imageHint": "man profile"
     },
     {
+      "id": "archive-video",
+      "description": "Showreel de vídeo com paisagem teal saturada",
+      "imageUrl": "https://picsum.photos/seed/archive_v/1280/720",
+      "imageHint": "teal mountain landscape"
+    },
+    {
+      "id": "archive-design",
+      "description": "Colagem de design gráfico glitch rosa e azul",
+      "imageUrl": "https://picsum.photos/seed/archive_d/1280/720",
+      "imageHint": "glitch art collage"
+    },
+    {
       "id": "video-main",
       "description": "Capa do vídeo principal de destaque",
       "imageUrl": "https://picsum.photos/seed/vini_video1/1280/720",

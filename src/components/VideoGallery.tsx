@@ -5,100 +5,127 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
-import { Play, X } from 'lucide-react';
+import { Play, Search, X } from 'lucide-react';
 
 export function VideoGallery() {
-  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [exploding, setExploding] = useState<string | null>(null);
   
-  const mainVideo = PlaceHolderImages.find(img => img.id === 'video-main');
-  const thumbs = [
-    PlaceHolderImages.find(img => img.id === 'video-sub1'),
-    PlaceHolderImages.find(img => img.id === 'video-sub2'),
-    PlaceHolderImages.find(img => img.id === 'video-sub3'),
-  ];
+  const videoImage = PlaceHolderImages.find(img => img.id === 'archive-video');
+  const designImage = PlaceHolderImages.find(img => img.id === 'archive-design');
+
+  const handlePortalClick = (type: string) => {
+    setExploding(type);
+    // In a real app, this would route to the full gallery or open a player
+    setTimeout(() => setExploding(null), 1000);
+  };
 
   return (
-    <section id="gallery" className="relative py-40 px-6 min-h-screen">
-      <div className="container mx-auto">
-        <h2 className="font-headline text-6xl md:text-9xl font-black text-white/10 absolute -top-10 left-0 uppercase pointer-events-none">
-          REELS_EXPLOSION
-        </h2>
+    <section id="gallery" className="relative py-32 px-6 bg-[#120812] overflow-hidden">
+      {/* Background Texture */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+      
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="mb-20 text-center lg:text-left">
+          <h2 className="font-headline text-6xl md:text-8xl font-black text-white uppercase tracking-tighter glitch-text" data-text="O ARQUIVO">
+            O ARQUIVO
+          </h2>
+          <p className="font-body text-xl text-primary/80 mt-4 max-w-2xl">
+            Acesse meus trabalhos mais recentes e meu portfolio completo.
+          </p>
+        </div>
 
-        <div className="relative flex items-center justify-center min-h-[600px]">
-          {/* Main Focused Video */}
-          <div className="relative w-full max-w-4xl aspect-video bg-black border-4 border-white overflow-hidden shadow-[20px_20px_0px_rgba(244,15,192,0.5)] group cursor-pointer" onClick={() => setActiveVideo("main")}>
-            <Image
-              src={mainVideo?.imageUrl || ""}
-              alt="Main Showreel"
-              fill
-              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-              data-ai-hint={mainVideo?.imageHint}
-            />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/0 transition-colors">
-              <Play className="w-20 h-20 text-white fill-white group-hover:scale-110 transition-transform" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          
+          {/* Element 1: Portal de Vídeo */}
+          <div 
+            className={cn(
+              "group relative cursor-pointer transition-all duration-300",
+              exploding === 'video' && "animate-pixel-burst"
+            )}
+            onClick={() => handlePortalClick('video')}
+          >
+            <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#F40FC0] transition-all duration-500 overflow-hidden">
+              <Image
+                src={videoImage?.imageUrl || ""}
+                alt="Showreel Vídeo"
+                fill
+                className="object-cover contrast-125 saturate-150 group-hover:scale-105 transition-transform duration-700 brightness-75 group-hover:brightness-100"
+                data-ai-hint={videoImage?.imageHint}
+              />
+              
+              {/* Play Button Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 bg-white flex items-center justify-center rounded-full group-hover:scale-110 group-hover:bg-primary transition-all duration-300 group-hover:animate-pulse">
+                  <Play className="w-10 h-10 text-black fill-black" />
+                </div>
+              </div>
+
+              {/* Label Sticker */}
+              <div className="absolute bottom-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker">
+                SHOWREELS & VIDEO PROJECTS
+              </div>
+
+              {/* Bottom Left Icon 'N' */}
+              <div className="absolute bottom-4 left-4 w-8 h-8 flex items-center justify-center bg-white text-black font-black text-xl leading-none">
+                N
+              </div>
+
+              {/* Scanline / RGB Split simulation on hover */}
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,4px_100%] transition-opacity" />
             </div>
-            <div className="absolute bottom-4 left-4 bg-primary text-white px-4 py-1 font-headline font-bold uppercase sticker">
-              LATEST SHOWREEL 2024
-            </div>
+            
+            {/* Idle micro-vibration via CSS */}
+            <div className="absolute -inset-1 border border-white/5 opacity-0 group-hover:opacity-100 animate-glitch pointer-events-none" />
           </div>
 
-          {/* Floating Thumbnails */}
-          {thumbs.map((thumb, idx) => (
-            <div
-              key={thumb?.id}
-              className={cn(
-                "absolute hidden lg:block cursor-pointer transition-all duration-500 hover:z-20",
-                idx === 0 && "-top-20 -left-10 w-64 aspect-square rotate-[-10deg] hover:rotate-0",
-                idx === 1 && "top-1/2 -right-20 w-80 aspect-square rotate-[15deg] hover:rotate-0",
-                idx === 2 && "-bottom-20 left-20 w-72 aspect-video rotate-[5deg] hover:rotate-0"
-              )}
-              onClick={() => setActiveVideo(thumb?.id || null)}
-            >
-              <div className="relative w-full h-full border-2 border-white bg-black overflow-hidden shadow-xl">
-                <Image
-                  src={thumb?.imageUrl || ""}
-                  alt="Thumbnail"
-                  fill
-                  className="object-cover grayscale contrast-150 hover:grayscale-0 transition-all"
-                  data-ai-hint={thumb?.imageHint}
-                />
-                <div className="absolute inset-0 bg-secondary/20 hover:bg-transparent" />
+          {/* Element 2: Portal de Design */}
+          <div 
+            className={cn(
+              "group relative cursor-pointer transition-all duration-300",
+              exploding === 'design' && "animate-pixel-burst"
+            )}
+            onClick={() => handlePortalClick('design')}
+          >
+            <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#00FFF9] transition-all duration-500 overflow-hidden">
+              <Image
+                src={designImage?.imageUrl || ""}
+                alt="Arquivo Design"
+                fill
+                className="object-cover contrast-150 group-hover:scale-105 transition-transform duration-700 brightness-75 group-hover:brightness-100"
+                data-ai-hint={designImage?.imageHint}
+              />
+              
+              {/* Design Icon Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 bg-white flex items-center justify-center group-hover:scale-110 group-hover:bg-accent transition-all duration-300 group-hover:animate-pulse rotate-45">
+                  <Search className="w-10 h-10 text-black -rotate-45" />
+                </div>
               </div>
-              <div className="absolute -bottom-3 -right-3 bg-white text-black text-[10px] font-mono p-1">
-                FILE_00{idx+1}.MP4
+
+              {/* Label Sticker (Top Left) */}
+              <div className="absolute top-4 left-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker -rotate-2">
+                DESIGN ARCHIVE
               </div>
+
+              {/* Bottom Left Icon 'D' */}
+              <div className="absolute bottom-4 left-4 w-8 h-8 flex items-center justify-center bg-white text-black font-black text-xl leading-none">
+                D
+              </div>
+
+              {/* Pixelation / Distort simulation on hover */}
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-30 bg-[radial-gradient(circle,currentColor_1px,transparent_1px)] bg-[size:4px_4px] text-accent transition-opacity" />
             </div>
-          ))}
+
+            {/* Idle micro-vibration */}
+            <div className="absolute -inset-1 border border-white/5 opacity-0 group-hover:opacity-100 animate-glitch pointer-events-none" />
+          </div>
+
         </div>
       </div>
 
-      {/* Video Modal with Explosion Transition */}
-      {activeVideo && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 backdrop-blur-xl animate-in fade-in zoom-in duration-300">
-          <button 
-            className="absolute top-10 right-10 text-white hover:text-primary transition-colors"
-            onClick={() => setActiveVideo(null)}
-          >
-            <X size={48} />
-          </button>
-          
-          <div className="w-[90vw] max-w-6xl aspect-video bg-black relative border-8 border-primary animate-glitch">
-            <div className="absolute inset-0 flex items-center justify-center text-white/20 font-headline text-2xl uppercase">
-              // VIDEO LOADING // STIMULATION_ACTIVE //
-            </div>
-            {/* Simulation of a video player */}
-            <div className="absolute bottom-0 left-0 w-full h-2 bg-primary/20">
-              <div className="h-full bg-primary w-2/3 animate-pulse" />
-            </div>
-          </div>
-          
-          {/* Explosion particles background simulation */}
-          <div className="absolute inset-0 pointer-events-none -z-10 opacity-50">
-            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary animate-pixel-burst" />
-            <div className="absolute top-3/4 right-1/4 w-4 h-4 bg-secondary animate-pixel-burst delay-100" />
-            <div className="absolute bottom-1/4 left-1/2 w-3 h-3 bg-accent animate-pixel-burst delay-200" />
-          </div>
-        </div>
+      {/* Explosion Overlay (when active) */}
+      {exploding && (
+        <div className="fixed inset-0 z-[100] bg-white animate-pixel-burst pointer-events-none" />
       )}
     </section>
   );
