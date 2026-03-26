@@ -1,5 +1,3 @@
-import data from './placeholder-images.json';
-
 export type ImagePlaceholder = {
   id: string;
   description: string;
@@ -7,4 +5,53 @@ export type ImagePlaceholder = {
   imageHint: string;
 };
 
-export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
+export const PlaceHolderImages: ImagePlaceholder[] = [
+  {
+    "id": "vini-profile",
+    "description": "Foto de perfil oficial do Vini Rosário",
+    "imageUrl": "https://drive.google.com/uc?export=download&id=1kgONHYcScEEWFs7KFaPDirf-aYxm6hkI",
+    "imageHint": "man profile"
+  },
+  {
+    "id": "capcut-icon",
+    "description": "Logo oficial do CapCut",
+    "imageUrl": "https://drive.google.com/uc?export=download&id=1MPFuZCof_5rBIQ6amEMeUAeyKqdXtJXd",
+    "imageHint": "capcut logo"
+  },
+  {
+    "id": "archive-video",
+    "description": "Showreel de vídeo com paisagem teal saturada",
+    "imageUrl": "https://picsum.photos/seed/archive_v/1280/720",
+    "imageHint": "teal mountain landscape"
+  },
+  {
+    "id": "archive-design",
+    "description": "Colagem de design gráfico glitch rosa e azul",
+    "imageUrl": "https://picsum.photos/seed/archive_d/1280/720",
+    "imageHint": "glitch art collage"
+  },
+  {
+    "id": "video-main",
+    "description": "Capa do vídeo principal de destaque",
+    "imageUrl": "https://picsum.photos/seed/vini_video1/1280/720",
+    "imageHint": "cinema urban motion"
+  },
+  {
+    "id": "video-sub1",
+    "description": "Miniatura flutuante de vídeo 1",
+    "imageUrl": "https://picsum.photos/seed/vini_video2/400/400",
+    "imageHint": "abstract glitch art"
+  },
+  {
+    "id": "video-sub2",
+    "description": "Miniatura flutuante de vídeo 2",
+    "imageUrl": "https://picsum.photos/seed/vini_video3/400/400",
+    "imageHint": "cyberpunk city lights"
+  },
+  {
+    "id": "video-sub3",
+    "description": "Miniatura flutuante de vídeo 3",
+    "imageUrl": "https://picsum.photos/seed/vini_video4/400/400",
+    "imageHint": "vhs noise texture"
+  }
+];

@@ -1,11 +1,10 @@
-
 "use client";
 
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
-import { Play, Search, ArrowLeft, Film, Palette, Layers, Monitor } from 'lucide-react';
+import { ArrowLeft, Film, Palette, Layers, Monitor, Play, Search } from 'lucide-react';
 
 const VIDEO_CATEGORIES = [
   { id: 'v1', title: 'SHOWREELS', icon: Film, desc: 'A seleção dos meus melhores momentos.' },
@@ -135,6 +134,10 @@ export function VideoGallery() {
                   ))}
                 </div>
               </div>
+
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <Play size={64} className="text-white fill-white" />
+              </div>
               
               <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker -rotate-2">
                 SHOWREELS & VIDEO PROJECTS
@@ -144,7 +147,6 @@ export function VideoGallery() {
                 N
               </div>
             </div>
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-primary mix-blend-overlay pointer-events-none transition-opacity" />
           </div>
 
           {/* Portal 2: Design */}
@@ -178,6 +180,10 @@ export function VideoGallery() {
                 </div>
               </div>
 
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <Search size={64} className="text-white" />
+              </div>
+
               <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker rotate-3">
                 DESIGN ARCHIVE
               </div>
@@ -186,7 +192,6 @@ export function VideoGallery() {
                 D
               </div>
             </div>
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-secondary mix-blend-overlay pointer-events-none transition-opacity" />
           </div>
 
         </div>
@@ -194,7 +199,10 @@ export function VideoGallery() {
 
       {exploding && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden pointer-events-none">
-          <div className="absolute inset-0 bg-primary animate-pixel-burst" />
+          <div className={cn(
+            "absolute inset-0 bg-primary animate-pixel-burst",
+            exploding === 'video' ? "paper-tear" : "animate-pixel-burst"
+          )} />
           <div className="absolute inset-0 bg-[#120812] translate-y-full animate-[slide-up_0.6s_ease-out_forwards]" />
         </div>
       )}
