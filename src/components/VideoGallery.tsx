@@ -168,8 +168,8 @@ export function VideoGallery() {
             <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#F40FC0] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden flex">
               <div className="relative w-1/2 h-full border-r-4 border-white overflow-hidden">
                 <Image
-                  src={getThumbnailUrl('18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh')}
-                  alt="Reels 03 Peek"
+                  src={getThumbnailUrl('1tm_r4ENLdisq2ptZCrr1Ioyl7Rgh9O6S')}
+                  alt="Reels 01 Peek"
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
                 />
