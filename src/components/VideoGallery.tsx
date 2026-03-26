@@ -41,9 +41,16 @@ export function VideoGallery() {
     const title = view === 'video' ? 'GALERIA DE VÍDEOS' : 'GALERIA DE DESIGN';
     const activeCategory = categories.find(c => c.id === selectedCatId);
     
-    const aspectClass = activeCategory && 'aspect' in activeCategory && activeCategory.aspect === 'fullscreen' 
-      ? "aspect-video" 
-      : "aspect-[9/16]";
+    const getAspectClass = (aspect?: string) => {
+      switch (aspect) {
+        case 'fullscreen': return "aspect-video";
+        case 'reels': return "aspect-[9/16]";
+        case 'square': return "aspect-square";
+        default: return "aspect-video";
+      }
+    };
+
+    const aspectClass = getAspectClass(activeCategory?.aspect);
 
     return (
       <section id="gallery" className="relative py-32 px-6 bg-[#120812] min-h-screen overflow-hidden">
@@ -65,9 +72,9 @@ export function VideoGallery() {
           {selectedCatId && activeCategory ? (
             <div className={cn(
               "grid grid-cols-1 gap-8",
-              activeCategory && 'aspect' in activeCategory && activeCategory.aspect === 'fullscreen' 
+              activeCategory.aspect === 'fullscreen' 
                 ? "md:grid-cols-2" 
-                : "md:grid-cols-2 lg:grid-cols-3"
+                : (activeCategory.aspect === 'square' ? "md:grid-cols-3" : "md:grid-cols-2 lg:grid-cols-3")
             )}>
               {activeCategory.items.length > 0 ? (
                 activeCategory.items.map((item: any) => (
@@ -97,7 +104,7 @@ export function VideoGallery() {
           ) : (
             <div className={cn(
               "grid grid-cols-1 gap-8",
-              categories.length === 2 ? "md:grid-cols-2 max-w-4xl mx-auto" : "md:grid-cols-3"
+              categories.length <= 2 ? "md:grid-cols-2 max-w-4xl mx-auto" : "md:grid-cols-3"
             )}>
               {categories.map((cat) => (
                 <div 
@@ -105,7 +112,6 @@ export function VideoGallery() {
                   onClick={() => setSelectedCatId(cat.id)}
                   className="group relative bg-black border-4 border-white p-8 hover:border-primary transition-all cursor-pointer overflow-hidden aspect-square flex flex-col justify-end shadow-[10px_10px_0px_#9214CC] hover:shadow-[15px_15px_0px_#F40FC0]"
                 >
-                  {/* Category Preview Pattern */}
                   {cat.items && cat.items.length > 0 ? (
                     <div className="absolute inset-0 z-0">
                       <Image 
@@ -153,7 +159,6 @@ export function VideoGallery() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
-          {/* Vídeo Portal Cover - Peek of Reels 03 and Video 01 */}
           <div 
             className={cn(
               "group relative cursor-pointer transition-all duration-300",
@@ -194,7 +199,6 @@ export function VideoGallery() {
             </div>
           </div>
 
-          {/* Design Portal Cover - Peek into Design Grid */}
           <div 
             className={cn(
               "group relative cursor-pointer transition-all duration-300",
@@ -202,13 +206,23 @@ export function VideoGallery() {
             )}
             onClick={() => handlePortalClick('design')}
           >
-            <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#00FFF9] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden">
-              <Image
-                src={designImage?.imageUrl || ""}
-                alt="Arquivo Design Peek"
-                fill
-                className="object-cover contrast-150 grayscale group-hover:grayscale-0 transition-all duration-1000 brightness-50 group-hover:brightness-75"
-              />
+            <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#00FFF9] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden flex">
+              <div className="relative w-1/2 h-full border-r-4 border-white overflow-hidden">
+                <Image
+                  src={getThumbnailUrl('1RliV-KjoGbxjiC0EjXQT3-KEeusR93gg')}
+                  alt="Branding Peek"
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
+                />
+              </div>
+              <div className="relative w-1/2 h-full overflow-hidden">
+                <Image
+                  src={getThumbnailUrl('14R0tVS73EJvq2sHc5lQhh4Uig2FGr1tp')}
+                  alt="Banner Peek"
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
+                />
+              </div>
 
               <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black/40 group-hover:bg-black/10 transition-colors z-20">
                 <div className="text-white flex flex-col items-center gap-4">

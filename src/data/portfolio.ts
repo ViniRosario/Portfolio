@@ -12,6 +12,16 @@ export const FULLSCREEN_VIDEOS = [
   { id: 'fs2', title: 'VÍDEO 02', driveId: '1gWyXa6d6Gvqn8XACLKdJztdvz2eutqdn' },
 ];
 
+export const BRANDING_ITEMS = [
+  { id: 'br1', title: 'BRANDING 01', driveId: '1RliV-KjoGbxjiC0EjXQT3-KEeusR93gg' },
+  { id: 'br2', title: 'BRANDING 02', driveId: '1LGK3IVS1FIOZpEE-zgwDR9S4UcZAxRrR' },
+  { id: 'br3', title: 'BRANDING 03', driveId: '1cqlYpQsJzK-qqmBjeCZs1OCYsn8hvBzI' },
+];
+
+export const BANNERS_ITEMS = [
+  { id: 'ba1', title: 'BANNER 01', driveId: '14R0tVS73EJvq2sHc5lQhh4Uig2FGr1tp' },
+];
+
 export const VIDEO_CATEGORIES = [
   { 
     id: 'v1', 
@@ -32,7 +42,28 @@ export const VIDEO_CATEGORIES = [
 ];
 
 export const DESIGN_CATEGORIES = [
-  { id: 'd1', title: 'BRANDING', icon: Palette, desc: 'IDENTIDADES VISUAIS E LOGOTIPOS.', items: [] },
-  { id: 'd2', title: 'THUMBNAILS', icon: Layers, desc: 'ARTES FOCADAS EM ALTA RETENÇÃO.', items: [] },
-  { id: 'd3', title: 'BANNERS', icon: Monitor, desc: 'COMPOSIÇÕES PARA WEB E EVENTOS.', items: [] },
+  { 
+    id: 'd1', 
+    title: 'BRANDING', 
+    icon: Palette, 
+    desc: 'IDENTIDADES VISUAIS E LOGOTIPOS.', 
+    aspect: 'square',
+    items: BRANDING_ITEMS 
+  },
+  { 
+    id: 'd2', 
+    title: 'THUMBNAILS', 
+    icon: Layers, 
+    desc: 'ARTES FOCADAS EM ALTA RETENÇÃO.', 
+    aspect: 'fullscreen',
+    items: [] 
+  },
+  { 
+    id: 'd3', 
+    title: 'BANNERS', 
+    icon: Monitor, 
+    desc: 'COMPOSIÇÕES PARA WEB E EVENTOS.', 
+    aspect: 'fullscreen',
+    items: BANNERS_ITEMS 
+  },
 ];
