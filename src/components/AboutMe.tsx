@@ -44,17 +44,20 @@ export function AboutMe() {
           </span>
         </h2>
         
-        <div className="space-y-6 font-body text-xl text-white/80 leading-relaxed">
+        <div className="space-y-6 font-body text-lg md:text-xl text-white/80 leading-relaxed">
           <p className="border-l-4 border-primary pl-6">
-            Sou um alquimista visual misturando texturas urbanas com precisão digital. Meu trabalho é uma celebração caótica do imperfeito, onde o glitch não é um erro — é o meio.
+            Meu nome é José Vinícius Rosário, tenho 20 anos e atuo como editor de vídeo e designer gráfico. Atualmente, estudo Ciência da Computação na Universidade Estadual de Santa Cruz (UESC), o que me traz uma base técnica e analítica sólida para o meu trabalho criativo.
           </p>
           <p>
-            Baseado nas interseções vibrantes da cultura e tecnologia, crio experiências digitais que demandam atenção. Sem transições suaves, sem cores seguras. Apenas criatividade pura e sem filtros.
+            Tenho experiência na edição de vídeos curtos e longos, sempre com foco em ritmo e retenção, além de produzir highlights dinâmicos. No design gráfico, desenvolvo peças com forte apelo visual, trabalhando com tipografias, criação de logos, banners e thumbnails focadas em atrair a atenção do público.
+          </p>
+          <p>
+            Meu objetivo é unir a lógica da tecnologia com a criatividade do audiovisual para entregar projetos autênticos, bem estruturados e de alto impacto de forma rápida e com qualidade.
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
-            <span className="px-3 py-1 bg-white/10 text-white font-mono text-sm border border-white/20">#CREATIVE_DIRECTION</span>
-            <span className="px-3 py-1 bg-white/10 text-white font-mono text-sm border border-white/20">#VISUAL_ZINE</span>
-            <span className="px-3 py-1 bg-white/10 text-white font-mono text-sm border border-white/20">#URBAN_AESTHETIC</span>
+            <span className="px-3 py-1 bg-white/10 text-white font-mono text-xs border border-white/20">#COMPUTER_SCIENCE</span>
+            <span className="px-3 py-1 bg-white/10 text-white font-mono text-xs border border-white/20">#VIDEO_EDITOR</span>
+            <span className="px-3 py-1 bg-white/10 text-white font-mono text-xs border border-white/20">#GRAPHIC_DESIGN</span>
           </div>
         </div>
       </div>
