@@ -2,6 +2,7 @@
 # https://firebase.google.com/docs/app-hosting/configure
 
 runConfig:
-  # Increase this value if you'd like to automatically spin up
-  # more instances in response to increased traffic.
+  # Otimizado para um portfólio de baixo tráfego com resposta rápida
+  minInstances: 0
   maxInstances: 1
+  memory: 512MiB
