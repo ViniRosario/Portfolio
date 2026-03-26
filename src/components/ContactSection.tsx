@@ -17,7 +17,7 @@ export function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           <div className="space-y-10">
             <h2 className="font-headline text-6xl md:text-8xl font-black text-white uppercase leading-none italic">
-              CONECTE-<span className="text-primary block not-italic glitch-text" data-text="SE">SE</span>
+              CONT<span className="text-primary block not-italic glitch-text" data-text="ATO">ATO</span>
             </h2>
             <p className="font-body text-xl text-white/60 max-w-md">
               Disponível para experimentação visual, colaborações caóticas e projetos digitais de alto impacto. Não seja um estranho ao glitch.
