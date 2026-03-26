@@ -6,10 +6,10 @@ import { cn } from '@/lib/utils';
 import { Instagram, Linkedin, Twitter, Mail, Send } from 'lucide-react';
 
 const SOCIAL_LINKS = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/vinirosario/", label: "LinkedIn" },
   { icon: Instagram, href: "https://www.instagram.com/vini_rosarioo/", label: "Instagram" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Mail, href: "#", label: "Email" },
+  { icon: Twitter, href: "https://x.com/vini_rosarioo", label: "Twitter" },
+  { icon: Mail, href: "mailto:jvinicius449@gmail.com", label: "Email" },
 ];
 
 export function ContactSection() {
