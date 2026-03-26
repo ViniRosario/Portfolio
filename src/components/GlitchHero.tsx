@@ -26,7 +26,7 @@ export function GlitchHero({ onEnter }: { onEnter: () => void }) {
       "fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0d040d] transition-all duration-500 overflow-hidden cursor-none",
       isEntering && "animate-pixel-burst pointer-events-none"
     )}>
-      {/* Dynamic Background Lighting */}
+      {/* Interactive Background Lighting */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div 
           className="absolute w-[600px] h-[600px] rounded-full bg-primary/20 bg-blur-light animate-float-blob"
@@ -39,18 +39,12 @@ export function GlitchHero({ onEnter }: { onEnter: () => void }) {
         
         {/* Spotlight effect following the mouse */}
         <div 
-          className="absolute inset-0 z-10 opacity-70 mix-blend-screen transition-opacity duration-300"
+          className="absolute inset-0 z-10 opacity-70 mix-blend-screen"
           style={{
             background: `radial-gradient(circle 500px at ${mousePos.x}px ${mousePos.y}px, rgba(146, 20, 204, 0.4) 0%, transparent 100%)`,
           }}
         />
       </div>
-
-      {/* Custom Cursor Light */}
-      <div 
-        className="fixed w-6 h-6 bg-white rounded-full pointer-events-none z-[100] blur-[4px] mix-blend-difference"
-        style={{ left: mousePos.x, top: mousePos.y, transform: 'translate(-50%, -50%)' }}
-      />
 
       <div className="relative z-20 group cursor-pointer" onClick={handleEnter}>
         <div className="absolute -inset-10 bg-primary/10 blur-3xl rounded-full scale-150 group-hover:bg-primary/20 transition-colors" />

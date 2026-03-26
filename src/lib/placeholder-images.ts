@@ -21,20 +21,14 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   },
   {
     "id": "archive-video",
-    "description": "Showreel de vídeo com paisagem teal saturada",
-    "imageUrl": "https://picsum.photos/seed/archive_v/1280/720",
-    "imageHint": "teal mountain landscape"
+    "description": "Capa da galeria de vídeos",
+    "imageUrl": "https://picsum.photos/seed/v_archive/1280/720",
+    "imageHint": "cinematic neon"
   },
   {
     "id": "archive-design",
-    "description": "Colagem de design gráfico glitch rosa e azul",
-    "imageUrl": "https://picsum.photos/seed/archive_d/1280/720",
-    "imageHint": "glitch art collage"
-  },
-  {
-    "id": "video-main",
-    "description": "Capa do vídeo principal de destaque",
-    "imageUrl": "https://picsum.photos/seed/vini_video1/1280/720",
-    "imageHint": "cinema urban motion"
+    "description": "Capa da galeria de design",
+    "imageUrl": "https://picsum.photos/seed/d_archive/1280/720",
+    "imageHint": "graphic design collage"
   }
 ];
