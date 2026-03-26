@@ -21,9 +21,14 @@ const AeIcon = () => (
 const CapcutIcon = () => (
   <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-24 md:h-24">
     <rect width="100" height="100" rx="15" fill="#000000" />
-    <path d="M25 50 L50 25 L75 50 L50 75 Z" fill="#FFFFFF" />
-    <path d="M50 25 L75 50 L50 75" fill="none" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" />
-    <circle cx="50" cy="50" r="10" fill="#00FFCC" />
+    <path
+      d="M32 32h21.333l14.667 14.667v21.333h-21.333l-14.667-14.667V32z"
+      fill="#fff"
+    />
+    <path
+      d="M42.667 42.667h10.666l5.334 5.333V58.667h-10.666l-5.334-5.334V42.667z"
+      fill="#000"
+    />
   </svg>
 );
 
