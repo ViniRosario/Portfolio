@@ -1,8 +1,5 @@
-# Settings to manage and configure a Firebase App Hosting backend.
-# https://firebase.google.com/docs/app-hosting/configure
 
 runConfig:
-  # Otimizado para um portfólio de baixo tráfego com resposta rápida
   minInstances: 0
   maxInstances: 1
   memory: 512MiB
