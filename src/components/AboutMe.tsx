@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -28,10 +27,10 @@ export function AboutMe() {
         
         {/* Collage elements */}
         <div className="absolute -bottom-6 -right-6 bg-accent text-background px-4 py-2 font-headline font-bold -rotate-6 sticker">
-          #STORYTELLER
+          #RETENTION_MASTER
         </div>
         <div className="absolute -top-8 -left-8 bg-primary text-white px-4 py-2 font-headline font-bold rotate-12 sticker">
-          // ARTIST //
+          // PIXEL_LOGIC //
         </div>
       </div>
 
