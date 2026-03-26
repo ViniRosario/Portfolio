@@ -26,18 +26,15 @@ export function GlitchHero({ onEnter }: { onEnter: () => void }) {
       "fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0d040d] transition-all duration-500 overflow-hidden cursor-none",
       isEntering && "animate-pixel-burst pointer-events-none"
     )}>
-      {/* Background Lighting Blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div 
-          className="absolute w-[600px] h-[600px] rounded-full bg-primary/25 bg-blur-light animate-float-blob"
+          className="absolute w-[600px] h-[600px] rounded-full bg-primary/20 bg-blur-light animate-float-blob"
           style={{ left: '5%', top: '15%' }} 
         />
         <div 
-          className="absolute w-[500px] h-[500px] rounded-full bg-secondary/20 bg-blur-light animate-float-blob"
+          className="absolute w-[500px] h-[500px] rounded-full bg-secondary/15 bg-blur-light animate-float-blob"
           style={{ right: '10%', bottom: '15%', animationDelay: '-7s' }} 
         />
-        
-        {/* Interactive Flashlight Effect */}
         <div 
           className="absolute inset-0 z-10 opacity-70 mix-blend-screen transition-opacity duration-300"
           style={{
@@ -46,13 +43,11 @@ export function GlitchHero({ onEnter }: { onEnter: () => void }) {
         />
       </div>
 
-      {/* Custom Cursor Light */}
       <div 
         className="fixed w-4 h-4 bg-white rounded-full pointer-events-none z-50 blur-[2px]"
         style={{ left: mousePos.x, top: mousePos.y, transform: 'translate(-50%, -50%)' }}
       />
 
-      {/* Main Content */}
       <div className="relative z-20 group cursor-pointer" onClick={handleEnter}>
         <div className="absolute -inset-10 bg-primary/10 blur-3xl rounded-full scale-150 group-hover:bg-primary/20 transition-colors" />
         
@@ -66,27 +61,15 @@ export function GlitchHero({ onEnter }: { onEnter: () => void }) {
         <div className="mt-6 flex justify-between items-center w-full px-2 relative">
           <span className="font-headline text-2xl md:text-4xl text-primary font-light italic">PORTFÓLIO</span>
           <div className="h-px bg-primary/50 flex-grow mx-4 hidden md:block" />
-          <span className="font-headline text-lg md:text-xl text-white/50 animate-pulse tracking-widest">[ CLICK TO ENTER ]</span>
+          <span className="font-headline text-lg md:text-xl text-white/50 animate-pulse tracking-widest uppercase">[ CLIQUE PARA ENTRAR ]</span>
         </div>
       </div>
       
-      {/* Decorative Text */}
       <div className="absolute top-10 left-10 text-xs font-mono text-primary/40 select-none hidden lg:block z-20">
         SYSTEM_INIT: SUCCESS<br />
-        LIGHT_ENGINE: ENHANCED<br />
-        ATMOSPHERE: ACTIVE
+        LIGHT_ENGINE: ACTIVE<br />
+        ATMOSPHERE: STABLE
       </div>
-      <div className="absolute bottom-10 right-10 text-xs font-mono text-primary/40 select-none hidden lg:block z-20 text-right">
-        ©2024 ROSARIO_CORP<br />
-        VISUAL_DRIVEN_LOGIC<br />
-        V.1.0.0_DYNAMIC
-      </div>
-
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.08] z-10" style={{
-        backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.2) 1px, transparent 0)',
-        backgroundSize: '30px 30px'
-      }} />
     </div>
   );
 }

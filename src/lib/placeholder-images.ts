@@ -1,3 +1,4 @@
+
 export type ImagePlaceholder = {
   id: string;
   description: string;
@@ -9,14 +10,14 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
   {
     "id": "vini-profile",
     "description": "Foto de perfil oficial do Vini Rosário",
-    "imageUrl": "https://drive.google.com/uc?export=download&id=1kgONHYcScEEWFs7KFaPDirf-aYxm6hkI",
+    "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&h=800&auto=format&fit=crop",
     "imageHint": "man profile"
   },
   {
     "id": "capcut-icon",
     "description": "Logo oficial do CapCut",
-    "imageUrl": "https://drive.google.com/uc?export=download&id=1MPFuZCof_5rBIQ6amEMeUAeyKqdXtJXd",
-    "imageHint": "capcut logo"
+    "imageUrl": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=200&h=200&auto=format&fit=crop",
+    "imageHint": "video app icon"
   },
   {
     "id": "archive-video",
@@ -35,23 +36,5 @@ export const PlaceHolderImages: ImagePlaceholder[] = [
     "description": "Capa do vídeo principal de destaque",
     "imageUrl": "https://picsum.photos/seed/vini_video1/1280/720",
     "imageHint": "cinema urban motion"
-  },
-  {
-    "id": "video-sub1",
-    "description": "Miniatura flutuante de vídeo 1",
-    "imageUrl": "https://picsum.photos/seed/vini_video2/400/400",
-    "imageHint": "abstract glitch art"
-  },
-  {
-    "id": "video-sub2",
-    "description": "Miniatura flutuante de vídeo 2",
-    "imageUrl": "https://picsum.photos/seed/vini_video3/400/400",
-    "imageHint": "cyberpunk city lights"
-  },
-  {
-    "id": "video-sub3",
-    "description": "Miniatura flutuante de vídeo 3",
-    "imageUrl": "https://picsum.photos/seed/vini_video4/400/400",
-    "imageHint": "vhs noise texture"
   }
 ];
