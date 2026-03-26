@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
-import { ArrowLeft, Play, Search } from 'lucide-react';
+import { ArrowLeft, Play, Search, Smartphone, Tv, Palette, Layers, Monitor } from 'lucide-react';
 import { VIDEO_CATEGORIES, DESIGN_CATEGORIES } from '@/data/portfolio';
 
 export function VideoGallery() {
@@ -103,22 +103,31 @@ export function VideoGallery() {
                 <div 
                   key={cat.id}
                   onClick={() => setSelectedCatId(cat.id)}
-                  className="group relative bg-white/[0.03] border-2 border-white/10 p-8 hover:border-primary transition-all cursor-pointer overflow-hidden aspect-square flex flex-col justify-end"
+                  className="group relative bg-black border-4 border-white p-8 hover:border-primary transition-all cursor-pointer overflow-hidden aspect-square flex flex-col justify-end shadow-[10px_10px_0px_#9214CC]"
                 >
-                  <div className="absolute top-6 left-6 opacity-20 group-hover:opacity-100 group-hover:text-primary transition-all">
-                    <cat.icon size={48} />
-                  </div>
+                  {/* Category Preview Pattern */}
+                  {cat.items && cat.items.length > 0 && (
+                    <div className="absolute inset-0 z-0">
+                      <Image 
+                        src={getThumbnailUrl(cat.items[0].driveId)}
+                        alt={cat.title}
+                        fill
+                        className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-75 transition-all duration-700"
+                      />
+                    </div>
+                  )}
                   
                   <div className="relative z-10">
-                    <h3 className="font-headline text-2xl font-bold text-white mb-2 group-hover:text-primary">{cat.title}</h3>
-                    <p className="font-body text-sm text-white/40 uppercase tracking-widest leading-tight">{cat.desc}</p>
+                    <div className="mb-4 text-white group-hover:text-primary transition-colors">
+                      <cat.icon size={48} />
+                    </div>
+                    <h3 className="font-headline text-2xl font-bold text-white mb-2 group-hover:text-primary uppercase">{cat.title}</h3>
+                    <p className="font-body text-xs text-white/60 uppercase tracking-widest leading-tight">{cat.desc}</p>
                   </div>
 
-                  <div className="absolute -right-4 -bottom-4 text-white opacity-[0.02] font-black text-9xl select-none group-hover:opacity-[0.05] transition-opacity">
-                    {cat.id}
+                  <div className="absolute -right-4 -bottom-4 text-white opacity-[0.05] font-black text-9xl select-none group-hover:opacity-[0.1] transition-opacity">
+                    {cat.id.substring(1)}
                   </div>
-                  
-                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors" />
                 </div>
               ))}
             </div>
@@ -144,7 +153,7 @@ export function VideoGallery() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
-          {/* Vídeo Portal */}
+          {/* Vídeo Portal Cover - Peek of Video 01 and Reels 01 */}
           <div 
             className={cn(
               "group relative cursor-pointer transition-all duration-300",
@@ -153,11 +162,10 @@ export function VideoGallery() {
             onClick={() => handlePortalClick('video')}
           >
             <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#F40FC0] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden flex">
-              {/* Split Previews: Reels 01 on Left, Video 01 on Right */}
               <div className="relative w-1/2 h-full border-r-4 border-white overflow-hidden">
                 <Image
                   src={getThumbnailUrl('161H-v1lE7qLY0xEcfKlB896XwRvQ3SsH')}
-                  alt="Reels 01 Preview"
+                  alt="Reels 01 Peek"
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
                 />
@@ -165,36 +173,28 @@ export function VideoGallery() {
               <div className="relative w-1/2 h-full overflow-hidden">
                 <Image
                   src={getThumbnailUrl('1BYrQgXSZtPVEQ2iJpEQF6-CBnsaHsBnp')}
-                  alt="Vídeo 01 Fullscreen Preview"
+                  alt="Vídeo 01 Peek"
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
                 />
               </div>
               
-              <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/40 group-hover:bg-transparent transition-colors z-20">
-                <div className="grid grid-cols-2 gap-4 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity">
-                  {VIDEO_CATEGORIES.map((cat) => (
-                    <div key={cat.id} className="border border-white/20 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center gap-2 p-2 group-hover:border-primary/50 transition-colors">
-                      <cat.icon size={24} className="text-white group-hover:text-primary transition-colors" />
-                      <span className="font-mono text-[8px] md:text-[10px] text-white/70 text-center uppercase tracking-tighter">
-                        {cat.title}
-                      </span>
-                    </div>
-                  ))}
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black/40 group-hover:bg-transparent transition-colors z-20">
+                <div className="text-white flex flex-col items-center gap-4">
+                  <Play size={64} className="fill-white drop-shadow-2xl" />
+                  <span className="font-headline text-4xl font-black uppercase tracking-tighter glitch-text" data-text="GALERIA_VÍDEO">
+                    GALERIA_VÍDEO
+                  </span>
                 </div>
-              </div>
-
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-30 pointer-events-none">
-                <Play size={64} className="text-white fill-white drop-shadow-2xl" />
               </div>
               
               <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker -rotate-2 z-40">
-                VIDEO_GALLERY
+                PORTAL_V01
               </div>
             </div>
           </div>
 
-          {/* Design Portal */}
+          {/* Design Portal Cover - Peek into Design Grid */}
           <div 
             className={cn(
               "group relative cursor-pointer transition-all duration-300",
@@ -205,31 +205,22 @@ export function VideoGallery() {
             <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#00FFF9] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden">
               <Image
                 src={designImage?.imageUrl || ""}
-                alt="Arquivo Design"
+                alt="Arquivo Design Peek"
                 fill
-                className="object-cover contrast-150 group-hover:scale-110 transition-transform duration-1000 brightness-50 group-hover:brightness-75"
-                data-ai-hint={designImage?.imageHint}
+                className="object-cover contrast-150 grayscale group-hover:grayscale-0 transition-all duration-1000 brightness-50 group-hover:brightness-75"
               />
 
-              <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/40 group-hover:bg-black/20 transition-colors z-20">
-                <div className="grid grid-cols-3 gap-4 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity">
-                  {DESIGN_CATEGORIES.map((cat) => (
-                    <div key={cat.id} className="border border-white/20 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center gap-2 p-2 group-hover:border-accent/50 transition-colors">
-                      <cat.icon size={24} className="text-white group-hover:text-accent transition-colors" />
-                      <span className="font-mono text-[8px] md:text-[10px] text-white/70 text-center uppercase tracking-tighter">
-                        {cat.title}
-                      </span>
-                    </div>
-                  ))}
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black/40 group-hover:bg-black/10 transition-colors z-20">
+                <div className="text-white flex flex-col items-center gap-4">
+                  <Search size={64} className="drop-shadow-2xl" />
+                  <span className="font-headline text-4xl font-black uppercase tracking-tighter glitch-text" data-text="ARQUIVO_DESIGN">
+                    ARQUIVO_DESIGN
+                  </span>
                 </div>
               </div>
 
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-30 pointer-events-none">
-                <Search size={64} className="text-white drop-shadow-2xl" />
-              </div>
-
               <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker rotate-3 z-40">
-                DESIGN_ARCHIVE
+                PORTAL_D01
               </div>
             </div>
           </div>
@@ -240,8 +231,7 @@ export function VideoGallery() {
       {exploding && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden pointer-events-none">
           <div className={cn(
-            "absolute inset-0 bg-primary animate-pixel-burst",
-            exploding === 'video' ? "paper-tear" : "animate-pixel-burst"
+            "absolute inset-0 bg-primary animate-pixel-burst paper-tear"
           )} />
           <div className="absolute inset-0 bg-[#120812] translate-y-full animate-[slide-up_0.6s_ease-out_forwards]" />
         </div>
@@ -249,3 +239,4 @@ export function VideoGallery() {
     </section>
   );
 }
+
