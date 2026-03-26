@@ -2,9 +2,9 @@
 import { Layers, Monitor, Palette, Smartphone, Tv } from 'lucide-react';
 
 export const REELS_VIDEOS = [
-  { id: 're3', title: 'REELS 03', driveId: '18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh' },
   { id: 're1', title: 'REELS 01', driveId: '161H-v1lE7qLY0xEcfKlB896XwRvQ3SsH' },
   { id: 're2', title: 'REELS 02', driveId: '1tm_r4ENLdisq2ptZCrr1Ioyl7Rgh9O6S' },
+  { id: 're3', title: 'REELS 03', driveId: '18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh' },
 ];
 
 export const FULLSCREEN_VIDEOS = [
