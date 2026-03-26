@@ -52,21 +52,21 @@ const TOOLS = [
     name: "Photoshop", 
     color: "#31A8FF", 
     Icon: PsIcon,
-    tag: "DESIGN_2D",
+    tag: "DESIGN 2D",
     desc: "Manipulação e Composição"
   },
   { 
     name: "After Effects", 
     color: "#CF96FD", 
     Icon: AeIcon,
-    tag: "MOTION_FX",
+    tag: "MOTION FX",
     desc: "Efeitos e Animação"
   },
   { 
     name: "Capcut", 
     color: "#FFFFFF", 
     Icon: CapcutIcon,
-    tag: "VIDEO_EDIT",
+    tag: "VIDEO EDIT",
     desc: "Ritmo e Retenção"
   },
 ];
@@ -86,7 +86,7 @@ export function StickerTools() {
             HABILI<span className="text-primary italic">DADES</span>
           </h2>
           <div className="h-1 w-24 bg-primary" />
-          <p className="font-mono text-[10px] text-primary/60 mt-4 tracking-[0.3em] uppercase">SYSTEM_ARCH_V2.0 // TECH_STACK</p>
+          <p className="font-mono text-[10px] text-primary/60 mt-4 tracking-[0.3em] uppercase">SYSTEM ARCH V2.0 // TECH STACK</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">

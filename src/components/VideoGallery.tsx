@@ -57,7 +57,7 @@ export function VideoGallery() {
             onClick={handleBack}
             className="flex items-center gap-2 text-primary font-mono text-sm mb-12 hover:translate-x-[-8px] transition-transform group"
           >
-            <ArrowLeft size={16} /> [ {selectedCatId ? 'VOLTAR_PARA_CATEGORIAS' : 'VOLTAR_AO_INÍCIO'} ]
+            <ArrowLeft size={16} /> [ {selectedCatId ? 'VOLTAR PARA CATEGORIAS' : 'VOLTAR AO INÍCIO'} ]
           </button>
 
           <div className="mb-20">
@@ -168,7 +168,7 @@ export function VideoGallery() {
             <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#F40FC0] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden flex">
               <div className="relative w-1/2 h-full border-r-4 border-white overflow-hidden">
                 <Image
-                  src={getThumbnailUrl('1tm_r4ENLdisq2ptZCrr1Ioyl7Rgh9O6S')}
+                  src={getThumbnailUrl('18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh')}
                   alt="Reels 01 Peek"
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
@@ -193,7 +193,7 @@ export function VideoGallery() {
               </div>
               
               <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker -rotate-2 z-40">
-                PORTAL_V01
+                PORTAL V01
               </div>
             </div>
           </div>
@@ -233,7 +233,7 @@ export function VideoGallery() {
               </div>
 
               <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker rotate-3 z-40">
-                PORTAL_D01
+                PORTAL D01
               </div>
             </div>
           </div>

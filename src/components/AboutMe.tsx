@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -54,9 +55,9 @@ export function AboutMe() {
             Meu objetivo é unir a lógica da tecnologia com a criatividade do audiovisual para entregar projetos autênticos, bem estruturados e de alto impacto de forma rápida e com qualidade.
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
-            <span className="px-3 py-1 bg-white/10 text-white font-mono text-xs border border-white/20">#COMPUTER_SCIENCE</span>
-            <span className="px-3 py-1 bg-white/10 text-white font-mono text-xs border border-white/20">#VIDEO_EDITOR</span>
-            <span className="px-3 py-1 bg-white/10 text-white font-mono text-xs border border-white/20">#GRAPHIC_DESIGN</span>
+            <span className="px-3 py-1 bg-white/10 text-white font-mono text-xs border border-white/20">#COMPUTER SCIENCE</span>
+            <span className="px-3 py-1 bg-white/10 text-white font-mono text-xs border border-white/20">#VIDEO EDITOR</span>
+            <span className="px-3 py-1 bg-white/10 text-white font-mono text-xs border border-white/20">#GRAPHIC DESIGN</span>
           </div>
         </div>
       </div>

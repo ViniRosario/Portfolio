@@ -28,7 +28,7 @@ export function ContactSection() {
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         variant: "destructive",
-        title: "DADOS_INCOMPLETOS",
+        title: "DADOS INCOMPLETOS",
         description: "Preencha todos os campos para transmitir sua mensagem.",
       });
       return;
@@ -41,7 +41,7 @@ export function ContactSection() {
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       toast({
-        title: "SINAL_TRANSMITIDO",
+        title: "SINAL TRANSMITIDO",
         description: "Sua mensagem foi enviada com sucesso para o Vini.",
       });
       
@@ -49,7 +49,7 @@ export function ContactSection() {
     } catch (err) {
       toast({
         variant: "destructive",
-        title: "ERRO_DE_CONEXÃO",
+        title: "ERRO DE CONEXÃO",
         description: "Não foi possível transmitir os dados. Tente novamente.",
       });
     } finally {
@@ -91,7 +91,7 @@ export function ContactSection() {
             </div>
 
             <div className="pt-10 border-t border-white/10 text-xs font-mono text-white/40 uppercase tracking-widest">
-              BASE: SÃO PAULO / REMOTE_GLOBAL<br />
+              BASE: SÃO PAULO / REMOTE GLOBAL<br />
               TIMEZONE: GMT-3
             </div>
           </div>
@@ -100,7 +100,7 @@ export function ContactSection() {
             <div className="relative">
               <input 
                 type="text" 
-                placeholder="SEU_NOME"
+                placeholder="SEU NOME"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full bg-white/5 border-2 border-white/10 px-6 py-4 text-white font-headline text-lg uppercase tracking-widest focus:border-primary focus:outline-none focus:bg-white/10 transition-all placeholder:text-white/20"
@@ -109,7 +109,7 @@ export function ContactSection() {
             <div className="relative">
               <input 
                 type="email" 
-                placeholder="SEU_EMAIL"
+                placeholder="SEU EMAIL"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full bg-white/5 border-2 border-white/10 px-6 py-4 text-white font-headline text-lg uppercase tracking-widest focus:border-primary focus:outline-none focus:bg-white/10 transition-all placeholder:text-white/20"
@@ -118,7 +118,7 @@ export function ContactSection() {
             <div className="relative">
               <textarea 
                 rows={4}
-                placeholder="A_MENSAGEM"
+                placeholder="A MENSAGEM"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="w-full bg-white/5 border-2 border-white/10 px-6 py-4 text-white font-headline text-lg uppercase tracking-widest focus:border-primary focus:outline-none focus:bg-white/10 transition-all placeholder:text-white/20"
@@ -133,7 +133,7 @@ export function ContactSection() {
                 {isSubmitting ? (
                   <>ENVIANDO... <Loader2 size={24} className="animate-spin" /></>
                 ) : (
-                  <>ENVIAR_MENSAGEM <Send size={24} /></>
+                  <>ENVIAR MENSAGEM <Send size={24} /></>
                 )}
               </span>
               <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-300 -z-0" />
