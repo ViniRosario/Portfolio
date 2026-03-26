@@ -4,7 +4,6 @@
 import React, { useState, useEffect } from 'react';
 import { GlitchHero } from '@/components/GlitchHero';
 import { AboutMe } from '@/components/AboutMe';
-import { ChaoticSkills } from '@/components/ChaoticSkills';
 import { StickerTools } from '@/components/StickerTools';
 import { VideoGallery } from '@/components/VideoGallery';
 import { ContactSection } from '@/components/ContactSection';
@@ -18,7 +17,6 @@ export default function Home() {
   // Simple scroll spy or navigation
   const navItems = [
     { label: 'SOBRE', href: '#about' },
-    { label: 'ESTILO', href: '#skills' },
     { label: 'HABILIDADES', href: '#tools' },
     { label: 'TRABALHOS', href: '#gallery' },
     { label: 'CONTATO', href: '#contact' },
@@ -86,7 +84,6 @@ export default function Home() {
       {/* Content Sections */}
       <div className="relative">
         <AboutMe />
-        <ChaoticSkills />
         <StickerTools />
         <VideoGallery />
         <ContactSection />
