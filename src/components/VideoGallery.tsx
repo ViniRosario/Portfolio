@@ -13,8 +13,6 @@ export function VideoGallery() {
   const [view, setView] = useState<'main' | 'video' | 'design'>('main');
   const [selectedCatId, setSelectedCatId] = useState<string | null>(null);
   
-  const designImage = PlaceHolderImages.find(img => img.id === 'archive-design');
-
   const handlePortalClick = (type: 'video' | 'design') => {
     setExploding(type);
     setTimeout(() => {
@@ -71,27 +69,28 @@ export function VideoGallery() {
 
           {selectedCatId && activeCategory ? (
             <div className={cn(
-              "grid grid-cols-1 gap-8",
+              "grid grid-cols-1 gap-y-16 gap-x-8",
               activeCategory.aspect === 'fullscreen' 
                 ? "md:grid-cols-2" 
                 : (activeCategory.aspect === 'square' ? "md:grid-cols-3" : "md:grid-cols-2 lg:grid-cols-3")
             )}>
               {activeCategory.items.length > 0 ? (
                 activeCategory.items.map((item: any) => (
-                  <div 
-                    key={item.id} 
-                    className={cn(
-                      "group relative border-4 border-white bg-black overflow-hidden shadow-[10px_10px_0px_#9214CC] hover:shadow-[15px_15px_0px_#F40FC0] transition-all",
-                      aspectClass
-                    )}
-                  >
-                    <iframe 
-                      src={getPreviewLink(item.driveId)}
-                      className="w-full h-full border-none grayscale-[0.3] group-hover:grayscale-0 transition-all"
-                      allow="autoplay"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-white text-black p-2 font-headline font-bold text-[10px] uppercase text-center">
+                  <div key={item.id} className="flex flex-col group">
+                    <div className="bg-white text-black px-3 py-1 font-headline font-bold text-[10px] uppercase inline-block self-start border-t-4 border-l-4 border-r-4 border-white transition-colors group-hover:bg-primary group-hover:text-white">
                       {item.title}
+                    </div>
+                    <div 
+                      className={cn(
+                        "relative border-4 border-white bg-black overflow-hidden shadow-[10px_10px_0px_#9214CC] group-hover:shadow-[15px_15px_0px_#F40FC0] transition-all",
+                        aspectClass
+                      )}
+                    >
+                      <iframe 
+                        src={getPreviewLink(item.driveId)}
+                        className="w-full h-full border-none grayscale-[0.3] group-hover:grayscale-0 transition-all"
+                        allow="autoplay"
+                      />
                     </div>
                   </div>
                 ))
