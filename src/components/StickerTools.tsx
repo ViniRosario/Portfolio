@@ -2,7 +2,9 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const PsIcon = () => (
   <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20 transition-transform duration-500 group-hover:scale-110">
@@ -30,15 +32,20 @@ const AeIcon = () => (
   </svg>
 );
 
-const CapcutIcon = () => (
-  <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20 transition-transform duration-500 group-hover:scale-110">
-    <rect width="100" height="100" rx="12" fill="#000000" stroke="#ffffff" strokeWidth="2" />
-    <g transform="translate(20, 20) scale(0.6)">
-      <rect x="0" y="0" width="60" height="60" rx="12" stroke="white" strokeWidth="8" fill="none" />
-      <rect x="30" y="30" width="60" height="60" rx="12" fill="white" />
-    </g>
-  </svg>
-);
+const CapcutIcon = () => {
+  const capcutImg = PlaceHolderImages.find(img => img.id === 'capcut-icon');
+  return (
+    <div className="relative w-16 h-16 md:w-20 md:h-20 transition-transform duration-500 group-hover:scale-110 overflow-hidden rounded-xl border border-white/20">
+      <Image 
+        src={capcutImg?.imageUrl || ""}
+        alt="CapCut"
+        fill
+        className="object-contain p-1"
+        data-ai-hint={capcutImg?.imageHint}
+      />
+    </div>
+  );
+};
 
 const TOOLS = [
   { 
@@ -67,7 +74,6 @@ const TOOLS = [
 export function StickerTools() {
   return (
     <section id="tools" className="relative py-32 px-6 bg-background">
-      {/* Tech Background Decor */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-1/4 w-px h-full bg-primary" />
         <div className="absolute top-0 right-1/4 w-px h-full bg-secondary" />
@@ -80,7 +86,7 @@ export function StickerTools() {
             HABILI<span className="text-primary italic">DADES</span>
           </h2>
           <div className="h-1 w-24 bg-primary" />
-          <p className="font-mono text-xs text-primary/60 mt-4 tracking-[0.3em]">TECH_STACK_OVERVIEW_V2.0</p>
+          <p className="font-mono text-[10px] text-primary/60 mt-4 tracking-[0.3em] uppercase">SYSTEM_ARCH_V2.0 // TECH_STACK</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
@@ -89,47 +95,42 @@ export function StickerTools() {
               key={tool.name}
               className="group relative"
             >
-              {/* Card Container */}
               <div className={cn(
                 "relative h-full p-8 bg-white/[0.03] border border-white/10 backdrop-blur-sm transition-all duration-500",
-                "group-hover:bg-white/[0.07] group-hover:border-white/20 group-hover:-translate-y-2 overflow-hidden"
+                "group-hover:bg-white/[0.07] group-hover:border-primary/50 group-hover:-translate-y-2 overflow-hidden"
               )}>
-                {/* Brand Accent Glow */}
                 <div 
-                  className="absolute -right-10 -top-10 w-32 h-32 blur-[60px] opacity-0 group-hover:opacity-40 transition-opacity duration-500"
+                  className="absolute -right-10 -top-10 w-32 h-32 blur-[60px] opacity-0 group-hover:opacity-20 transition-opacity duration-500"
                   style={{ backgroundColor: tool.color }}
                 />
 
                 <div className="flex flex-col items-center text-center gap-6">
                   <div className="relative">
                     <tool.Icon />
-                    {/* Floating Tech Border */}
-                    <div className="absolute -inset-4 border border-white/5 opacity-0 group-hover:opacity-100 transition-all duration-700 scale-75 group-hover:scale-110 pointer-events-none" />
+                    <div className="absolute -inset-4 border border-primary/20 opacity-0 group-hover:opacity-100 transition-all duration-700 scale-75 group-hover:scale-110 pointer-events-none" />
                   </div>
 
-                  <div className="space-y-2">
-                    <span className="inline-block px-2 py-1 bg-white/5 text-[10px] font-mono text-primary border border-primary/20">
+                  <div className="space-y-3">
+                    <span className="inline-block px-3 py-1 bg-primary/10 text-[10px] font-mono text-primary border border-primary/20 tracking-tighter">
                       {tool.tag}
                     </span>
                     <h3 className="font-headline text-2xl font-bold text-white group-hover:text-primary transition-colors">
                       {tool.name}
                     </h3>
-                    <p className="text-white/40 font-body text-sm uppercase tracking-wider">
+                    <p className="text-white/40 font-body text-xs uppercase tracking-widest leading-relaxed">
                       {tool.desc}
                     </p>
                   </div>
                 </div>
 
-                {/* Bottom Tech Bar */}
                 <div 
                   className="absolute bottom-0 left-0 h-1 bg-white/10 transition-all duration-500 group-hover:w-full"
-                  style={{ backgroundColor: `rgba(${parseInt(tool.color.slice(1,3),16)}, ${parseInt(tool.color.slice(3,5),16)}, ${parseInt(tool.color.slice(5,7),16)}, 0.5)` }}
+                  style={{ backgroundColor: tool.color }}
                 />
               </div>
               
-              {/* Outer Shadow Glow */}
               <div 
-                className="absolute inset-0 blur-2xl opacity-0 group-hover:opacity-10 -z-10 transition-opacity duration-500"
+                className="absolute inset-0 blur-3xl opacity-0 group-hover:opacity-5 -z-10 transition-opacity duration-500"
                 style={{ backgroundColor: tool.color }}
               />
             </div>

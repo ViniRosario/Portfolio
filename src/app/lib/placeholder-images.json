@@ -7,6 +7,12 @@
       "imageHint": "man profile"
     },
     {
+      "id": "capcut-icon",
+      "description": "Logo oficial do CapCut",
+      "imageUrl": "https://drive.google.com/uc?export=download&id=1MPFuZCof_5rBIQ6amEMeUAeyKqdXtJXd",
+      "imageHint": "capcut logo"
+    },
+    {
       "id": "archive-video",
       "description": "Showreel de vídeo com paisagem teal saturada",
       "imageUrl": "https://picsum.photos/seed/archive_v/1280/720",
