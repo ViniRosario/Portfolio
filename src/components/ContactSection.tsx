@@ -5,6 +5,9 @@ import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Instagram, Linkedin, Twitter, Mail, Send, Loader2 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { useFirestore } from '@/firebase';
+import { collection, serverTimestamp } from 'firebase/firestore';
+import { addDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 
 const SOCIAL_LINKS = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/vinirosario/", label: "LinkedIn" },
@@ -15,6 +18,7 @@ const SOCIAL_LINKS = [
 
 export function ContactSection() {
   const { toast } = useToast();
+  const db = useFirestore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -37,8 +41,17 @@ export function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      // Simulação de envio (Processando sinal...)
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const messagesRef = collection(db, 'contactMessages');
+      
+      addDocumentNonBlocking(messagesRef, {
+        senderName: formData.name,
+        senderEmail: formData.email,
+        messageContent: formData.message,
+        timestamp: serverTimestamp(),
+      });
+      
+      // Delay visual para simular transmissão
+      await new Promise(resolve => setTimeout(resolve, 800));
       
       toast({
         title: "SINAL TRANSMITIDO",
@@ -50,7 +63,7 @@ export function ContactSection() {
       toast({
         variant: "destructive",
         title: "ERRO DE CONEXÃO",
-        description: "Não foi possível transmitir os dados. Tente novamente.",
+        description: "Não foi possível transmitir os dados para o servidor.",
       });
     } finally {
       setIsSubmitting(false);
