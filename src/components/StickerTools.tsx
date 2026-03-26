@@ -19,16 +19,11 @@ const AeIcon = () => (
 );
 
 const CapcutIcon = () => (
-  <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-24 md:h-24">
-    <rect width="100" height="100" rx="15" fill="#000000" />
-    <path
-      d="M32 32h21.333l14.667 14.667v21.333h-21.333l-14.667-14.667V32z"
-      fill="#fff"
-    />
-    <path
-      d="M42.667 42.667h10.666l5.334 5.333V58.667h-10.666l-5.334-5.334V42.667z"
-      fill="#000"
-    />
+  <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-24 md:h-24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" rx="20" fill="black"/>
+    <path d="M28 28H58V58H28V28Z" fill="white"/>
+    <path d="M42 42H72V72H42V42Z" fill="white"/>
+    <path d="M42 42H58V58H42V42Z" fill="black"/>
   </svg>
 );
 
@@ -48,7 +43,7 @@ export function StickerTools() {
   }, []);
 
   return (
-    <section id="tools" className="relative py-32 px-6 bg-[#22141F]">
+    <section id="tools" className="relative py-32 px-6 bg-[#22141F] overflow-visible">
       <div className="container mx-auto">
         <h2 className="font-headline text-6xl md:text-8xl font-black text-white mb-24 text-center uppercase tracking-tighter">
           HABILI<span className="text-secondary">DADES</span>
@@ -56,8 +51,7 @@ export function StickerTools() {
         
         <div className="flex flex-wrap justify-center gap-10 md:gap-20">
           {TOOLS.map((tool, idx) => {
-            // Reduced parallax intensity to prevent icons from moving off-screen
-            const parallax = (scrollY * 0.02) * ((idx % 3) + 1);
+            const parallax = (scrollY * 0.015) * ((idx % 3) + 0.5);
             return (
               <div
                 key={tool.name}
