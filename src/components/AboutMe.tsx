@@ -30,7 +30,7 @@ export function AboutMe() {
           #RETENTION_MASTER
         </div>
         <div className="absolute -top-8 -left-8 bg-primary text-white px-4 py-2 font-headline font-bold rotate-12 sticker">
-          import &#123; gallery &#125;
+          new project
         </div>
       </div>
 
