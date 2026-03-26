@@ -43,15 +43,16 @@ export function StickerTools() {
   }, []);
 
   return (
-    <section id="tools" className="relative py-32 px-6 overflow-hidden bg-[#22141F]">
+    <section id="tools" className="relative py-32 px-6 bg-[#22141F]">
       <div className="container mx-auto">
-        <h2 className="font-headline text-6xl md:text-8xl font-black text-white mb-20 text-center uppercase tracking-tighter">
+        <h2 className="font-headline text-6xl md:text-8xl font-black text-white mb-24 text-center uppercase tracking-tighter">
           HABILI<span className="text-secondary">DADES</span>
         </h2>
         
         <div className="flex flex-wrap justify-center gap-10 md:gap-20">
           {TOOLS.map((tool, idx) => {
-            const parallax = (scrollY * 0.05) * ((idx % 3) + 1);
+            // Reduced parallax intensity to prevent icons from moving off-screen
+            const parallax = (scrollY * 0.02) * ((idx % 3) + 1);
             return (
               <div
                 key={tool.name}
@@ -67,7 +68,7 @@ export function StickerTools() {
                 <div 
                   className={cn(
                     "relative p-4 md:p-8 bg-white/5 border-2 border-white/20 paper-tear transition-all duration-300 flex items-center justify-center",
-                    "group-hover:bg-white group-active:scale-95"
+                    "group-hover:bg-white group-active:scale-95 sticker"
                   )}
                   style={{ '--rotation': `${tool.rotation}deg` } as any}
                 >
@@ -89,8 +90,8 @@ export function StickerTools() {
       </div>
       
       {/* Decorative Stickers scattered around */}
-      <div className="absolute top-1/4 right-10 w-24 h-24 bg-primary rotate-12 sticker paper-tear hidden lg:block" />
-      <div className="absolute bottom-1/4 left-10 w-32 h-12 bg-accent rotate-[-15deg] sticker paper-tear hidden lg:block" />
+      <div className="absolute top-1/4 right-10 w-24 h-24 bg-primary rotate-12 sticker paper-tear hidden lg:block opacity-20" />
+      <div className="absolute bottom-1/4 left-10 w-32 h-12 bg-accent rotate-[-15deg] sticker paper-tear hidden lg:block opacity-20" />
     </section>
   );
 }
