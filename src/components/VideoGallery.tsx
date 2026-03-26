@@ -5,38 +5,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
-import { ArrowLeft, Palette, Layers, Monitor, Play, Search, X } from 'lucide-react';
-
-const SHORT_EDITS_VIDEOS = [
-  { id: 'se1', title: 'Short Edit 01', driveId: '1BYrQgXSZtPVEQ2iJpEQF6-CBnsaHsBnp' },
-  { id: 'se2', title: 'Short Edit 02', driveId: '1gWyXa6d6Gvqn8XACLKdJztdvz2eutqdn' },
-  { id: 'se3', title: 'Short Edit 03', driveId: '161H-v1lE7qLY0xEcfKlB896XwRvQ3SsH' },
-  { id: 'se4', title: 'Short Edit 04', driveId: '1tm_r4ENLdisq2ptZCrr1Ioyl7Rgh9O6S' },
-  { id: 'se5', title: 'Short Edit 05', driveId: '18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh' },
-];
-
-const VIDEO_CATEGORIES = [
-  { 
-    id: 'v1', 
-    title: 'SHORT EDITS', 
-    icon: Layers, 
-    desc: 'Vídeos dinâmicos para redes sociais.', 
-    items: SHORT_EDITS_VIDEOS 
-  },
-  { 
-    id: 'v2', 
-    title: 'LONG FORM', 
-    icon: Monitor, 
-    desc: 'Edições completas e narrativas.', 
-    items: [] 
-  },
-];
-
-const DESIGN_CATEGORIES = [
-  { id: 'd1', title: 'BRANDING', icon: Palette, desc: 'Identidades visuais e logotipos.', items: [] },
-  { id: 'd2', title: 'THUMBNAILS', icon: Layers, desc: 'Artes focadas em alta retenção.', items: [] },
-  { id: 'd3', title: 'BANNERS', icon: Monitor, desc: 'Composições para web e eventos.', items: [] },
-];
+import { ArrowLeft, Play, Search, X } from 'lucide-react';
+import { VIDEO_CATEGORIES, DESIGN_CATEGORIES } from '@/data/portfolio';
 
 export function VideoGallery() {
   const [exploding, setExploding] = useState<string | null>(null);
@@ -64,11 +34,12 @@ export function VideoGallery() {
     }
   };
 
-  const getDirectLink = (id: string) => `https://drive.google.com/uc?export=download&id=${id}`;
+  // Google Drive Preview link is more reliable for embedding
+  const getPreviewLink = (id: string) => `https://drive.google.com/file/d/${id}/preview`;
 
   if (view !== 'main') {
     const categories = view === 'video' ? VIDEO_CATEGORIES : DESIGN_CATEGORIES;
-    const title = view === 'video' ? 'GALERIA DE VIDEOS' : 'GALERIA DE DESIGN';
+    const title = view === 'video' ? 'GALERIA DE VÍDEOS' : 'GALERIA DE DESIGN';
     const activeCategory = categories.find(c => c.id === selectedCatId);
 
     return (
@@ -93,13 +64,12 @@ export function VideoGallery() {
               {activeCategory.items.length > 0 ? (
                 activeCategory.items.map((item: any) => (
                   <div key={item.id} className="group relative border-4 border-white bg-black aspect-[9/16] overflow-hidden shadow-[10px_10px_0px_#9214CC] hover:shadow-[15px_15px_0px_#F40FC0] transition-all">
-                    <video 
-                      src={getDirectLink(item.driveId)}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                      controls
-                      poster={`https://picsum.photos/seed/${item.id}/400/700`}
+                    <iframe 
+                      src={getPreviewLink(item.driveId)}
+                      className="w-full h-full border-none grayscale-[0.5] group-hover:grayscale-0 transition-all"
+                      allow="autoplay"
                     />
-                    <div className="absolute bottom-4 left-4 right-4 bg-white text-black p-2 font-headline font-bold text-xs transform translate-y-full group-hover:translate-y-0 transition-transform">
+                    <div className="absolute bottom-0 left-0 right-0 bg-white text-black p-2 font-headline font-bold text-[10px] uppercase text-center">
                       {item.title}
                     </div>
                   </div>
@@ -160,6 +130,7 @@ export function VideoGallery() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
+          {/* Vídeo Portal */}
           <div 
             className={cn(
               "group relative cursor-pointer transition-all duration-300",
@@ -203,6 +174,7 @@ export function VideoGallery() {
             </div>
           </div>
 
+          {/* Design Portal */}
           <div 
             className={cn(
               "group relative cursor-pointer transition-all duration-300",
@@ -261,4 +233,3 @@ export function VideoGallery() {
     </section>
   );
 }
-
