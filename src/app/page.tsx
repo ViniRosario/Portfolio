@@ -31,14 +31,19 @@ export default function Home() {
   return (
     <main className="relative min-h-screen bg-[#22141F] selection:bg-primary selection:text-white">
       {/* Persistent Navigation */}
-      <nav className="fixed top-0 left-0 w-full z-40 p-6 flex justify-between items-center mix-blend-difference">
-        <a href="#" className="font-headline text-2xl font-bold tracking-tighter text-white uppercase group">
-          VINI<span className="text-primary group-hover:animate-glitch inline-block">_</span>R
+      <nav className="fixed top-0 left-0 w-full z-40 p-6 flex justify-between items-start mix-blend-difference">
+        <a href="#" className="flex flex-col group">
+          <span className="font-headline text-2xl font-bold tracking-tighter text-white uppercase leading-none">
+            VINI ROSÁRIO
+          </span>
+          <span className="font-mono text-[10px] text-primary tracking-wider uppercase leading-none mt-1 opacity-80 group-hover:animate-glitch">
+            Editor de vídeo // Designer gráfico
+          </span>
         </a>
         
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="w-12 h-12 flex flex-col items-center justify-center gap-1 group"
+          className="w-12 h-12 flex flex-col items-center justify-center gap-1 group mt-[-8px]"
         >
           <div className={cn("h-1 bg-white transition-all", isMenuOpen ? "w-8 rotate-45 translate-y-2" : "w-8")} />
           <div className={cn("h-1 bg-white transition-all", isMenuOpen ? "opacity-0" : "w-6")} />
