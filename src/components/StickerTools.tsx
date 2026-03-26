@@ -35,12 +35,12 @@ const AeIcon = () => (
 const CapcutIcon = () => {
   const capcutImg = PlaceHolderImages.find(img => img.id === 'capcut-icon');
   return (
-    <div className="relative w-16 h-16 md:w-20 md:h-20 transition-transform duration-500 group-hover:scale-110 overflow-hidden rounded-xl border border-white/20">
+    <div className="relative w-16 h-16 md:w-20 md:h-20 transition-transform duration-500 group-hover:scale-110">
       <Image 
         src={capcutImg?.imageUrl || ""}
         alt="CapCut"
         fill
-        className="object-contain p-1"
+        className="object-contain"
         data-ai-hint={capcutImg?.imageHint}
       />
     </div>
