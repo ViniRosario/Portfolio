@@ -124,10 +124,6 @@ export function VideoGallery() {
                     <h3 className="font-headline text-2xl font-bold text-white mb-2 group-hover:text-primary uppercase">{cat.title}</h3>
                     <p className="font-body text-xs text-white/60 uppercase tracking-widest leading-tight">{cat.desc}</p>
                   </div>
-
-                  <div className="absolute -right-4 -bottom-4 text-white opacity-[0.05] font-black text-9xl select-none group-hover:opacity-[0.1] transition-opacity">
-                    {cat.id.substring(1)}
-                  </div>
                 </div>
               ))}
             </div>
@@ -153,7 +149,7 @@ export function VideoGallery() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
-          {/* Vídeo Portal Cover - Peek of Video 01 and Reels 01 */}
+          {/* Vídeo Portal Cover - Peek of Reels 03 and Video 01 */}
           <div 
             className={cn(
               "group relative cursor-pointer transition-all duration-300",
@@ -164,8 +160,8 @@ export function VideoGallery() {
             <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#F40FC0] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden flex">
               <div className="relative w-1/2 h-full border-r-4 border-white overflow-hidden">
                 <Image
-                  src={getThumbnailUrl('161H-v1lE7qLY0xEcfKlB896XwRvQ3SsH')}
-                  alt="Reels 01 Peek"
+                  src={getThumbnailUrl('18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh')}
+                  alt="Reels 03 Peek"
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
                 />
@@ -182,8 +178,8 @@ export function VideoGallery() {
               <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black/40 group-hover:bg-transparent transition-colors z-20">
                 <div className="text-white flex flex-col items-center gap-4">
                   <Play size={64} className="fill-white drop-shadow-2xl" />
-                  <span className="font-headline text-4xl font-black uppercase tracking-tighter glitch-text" data-text="GALERIA_VÍDEO">
-                    GALERIA_VÍDEO
+                  <span className="font-headline text-4xl font-black uppercase tracking-tighter glitch-text" data-text="GALERIA DE VIDEOS">
+                    GALERIA DE VIDEOS
                   </span>
                 </div>
               </div>
@@ -213,8 +209,8 @@ export function VideoGallery() {
               <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black/40 group-hover:bg-black/10 transition-colors z-20">
                 <div className="text-white flex flex-col items-center gap-4">
                   <Search size={64} className="drop-shadow-2xl" />
-                  <span className="font-headline text-4xl font-black uppercase tracking-tighter glitch-text" data-text="ARQUIVO_DESIGN">
-                    ARQUIVO_DESIGN
+                  <span className="font-headline text-4xl font-black uppercase tracking-tighter glitch-text" data-text="GALERIA DE DESIGN">
+                    GALERIA DE DESIGN
                   </span>
                 </div>
               </div>
@@ -239,4 +235,3 @@ export function VideoGallery() {
     </section>
   );
 }
-
