@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
-import { ArrowLeft, Play, Search, X } from 'lucide-react';
+import { ArrowLeft, Play, Search } from 'lucide-react';
 import { VIDEO_CATEGORIES, DESIGN_CATEGORIES } from '@/data/portfolio';
 
 export function VideoGallery() {
@@ -34,13 +34,17 @@ export function VideoGallery() {
     }
   };
 
-  // Google Drive Preview link is more reliable for embedding
   const getPreviewLink = (id: string) => `https://drive.google.com/file/d/${id}/preview`;
 
   if (view !== 'main') {
     const categories = view === 'video' ? VIDEO_CATEGORIES : DESIGN_CATEGORIES;
     const title = view === 'video' ? 'GALERIA DE VÍDEOS' : 'GALERIA DE DESIGN';
     const activeCategory = categories.find(c => c.id === selectedCatId);
+    
+    // Dynamic aspect ratio based on category selection
+    const aspectClass = activeCategory && 'aspect' in activeCategory && activeCategory.aspect === 'fullscreen' 
+      ? "aspect-video" 
+      : "aspect-[9/16]";
 
     return (
       <section id="gallery" className="relative py-32 px-6 bg-[#120812] min-h-screen overflow-hidden">
@@ -60,13 +64,24 @@ export function VideoGallery() {
           </div>
 
           {selectedCatId && activeCategory ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className={cn(
+              "grid grid-cols-1 gap-8",
+              activeCategory && 'aspect' in activeCategory && activeCategory.aspect === 'fullscreen' 
+                ? "md:grid-cols-2" 
+                : "md:grid-cols-2 lg:grid-cols-3"
+            )}>
               {activeCategory.items.length > 0 ? (
                 activeCategory.items.map((item: any) => (
-                  <div key={item.id} className="group relative border-4 border-white bg-black aspect-[9/16] overflow-hidden shadow-[10px_10px_0px_#9214CC] hover:shadow-[15px_15px_0px_#F40FC0] transition-all">
+                  <div 
+                    key={item.id} 
+                    className={cn(
+                      "group relative border-4 border-white bg-black overflow-hidden shadow-[10px_10px_0px_#9214CC] hover:shadow-[15px_15px_0px_#F40FC0] transition-all",
+                      aspectClass
+                    )}
+                  >
                     <iframe 
                       src={getPreviewLink(item.driveId)}
-                      className="w-full h-full border-none grayscale-[0.5] group-hover:grayscale-0 transition-all"
+                      className="w-full h-full border-none grayscale-[0.3] group-hover:grayscale-0 transition-all"
                       allow="autoplay"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-white text-black p-2 font-headline font-bold text-[10px] uppercase text-center">
