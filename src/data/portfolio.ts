@@ -16,6 +16,10 @@ export const BRANDING_ITEMS = [
   { id: 'br1', title: 'BRANDING 01', driveId: '1RliV-KjoGbxjiC0EjXQT3-KEeusR93gg' },
   { id: 'br2', title: 'BRANDING 02', driveId: '1LGK3IVS1FIOZpEE-zgwDR9S4UcZAxRrR' },
   { id: 'br3', title: 'BRANDING 03', driveId: '1cqlYpQsJzK-qqmBjeCZs1OCYsn8hvBzI' },
+  { id: 'br4', title: 'BRANDING 04', driveId: '1ZcKgWDJWPHKhmb-2txzmGeFEJpq_ejMH' },
+  { id: 'br5', title: 'BRANDING 05', driveId: '1HzZgO3xljAimihhfpQSScl6XVu4aSDW0' },
+  { id: 'br6', title: 'BRANDING 06', driveId: '1ZftN2FlcyItp3FIjT0AX6Un_GkChkeg0' },
+  { id: 'br7', title: 'BRANDING 07', driveId: '1rSY6ZwrS48drvmcIoorzm7Pk193J0XNb' },
 ];
 
 export const BANNERS_ITEMS = [
