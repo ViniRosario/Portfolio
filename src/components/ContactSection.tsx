@@ -20,7 +20,7 @@ export function ContactSection() {
               CONT<span className="text-primary block not-italic glitch-text" data-text="ATO">ATO</span>
             </h2>
             <p className="font-body text-xl text-white/60 max-w-md">
-              Disponível para experimentação visual, colaborações caóticas e projetos digitais de alto impacto. Não seja um estranho ao glitch.
+              Se interessou pelo meu serviço? Entre em contato comigo a partir das redes sociais ou o e-mail abaixo
             </p>
             
             <div className="flex gap-6">
