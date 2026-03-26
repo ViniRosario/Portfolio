@@ -43,7 +43,7 @@ export function VideoGallery() {
 
   if (view !== 'main') {
     const categories = view === 'video' ? VIDEO_CATEGORIES : DESIGN_CATEGORIES;
-    const title = view === 'video' ? 'PORTAL_VÍDEO' : 'PORTAL_DESIGN';
+    const title = view === 'video' ? 'GALERIA DE VIDEOS' : 'GALERIA DE DESIGN';
 
     return (
       <section id="gallery" className="relative py-32 px-6 bg-[#120812] min-h-screen overflow-hidden">
