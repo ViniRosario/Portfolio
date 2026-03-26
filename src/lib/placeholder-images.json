@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "vini-profile",
+      "description": "Artistic portrait of Vini Rosário",
+      "imageUrl": "https://picsum.photos/seed/vini88/800/1000",
+      "imageHint": "portrait man urban"
+    },
+    {
+      "id": "video-main",
+      "description": "Main showcase video cover",
+      "imageUrl": "https://picsum.photos/seed/vini_video1/1280/720",
+      "imageHint": "cinema urban motion"
+    },
+    {
+      "id": "video-sub1",
+      "description": "Floating thumbnail video 1",
+      "imageUrl": "https://picsum.photos/seed/vini_video2/400/400",
+      "imageHint": "abstract glitch art"
+    },
+    {
+      "id": "video-sub2",
+      "description": "Floating thumbnail video 2",
+      "imageUrl": "https://picsum.photos/seed/vini_video3/400/400",
+      "imageHint": "cyberpunk city lights"
+    },
+    {
+      "id": "video-sub3",
+      "description": "Floating thumbnail video 3",
+      "imageUrl": "https://picsum.photos/seed/vini_video4/400/400",
+      "imageHint": "vhs noise texture"
+    }
+  ]
 }
