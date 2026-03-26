@@ -72,7 +72,7 @@ export function ContactSection() {
             </h2>
             <p className="font-body text-xl text-white/60 max-w-md">
               Se interessou pelo meu serviço?<br />
-              Entre em contato comigo a partir das redes sociais ou o e-mail abaixo
+              Entre em contato comigo a partir das redes sociais ou o e-mail abaixo.
             </p>
             
             <div className="flex gap-6">
