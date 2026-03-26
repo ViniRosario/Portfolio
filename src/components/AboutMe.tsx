@@ -37,19 +37,19 @@ export function AboutMe() {
 
       <div className="w-full lg:w-1/2 max-w-2xl space-y-8 z-10">
         <h2 className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tight text-white">
-          <span className="text-primary block">ABOUT</span>
+          <span className="text-primary block">SOBRE</span>
           <span className="inline-block relative">
-            MYSELF
+            MIM
             <span className="absolute -bottom-2 left-0 w-full h-4 bg-secondary/40 -z-10" />
           </span>
         </h2>
         
         <div className="space-y-6 font-body text-xl text-white/80 leading-relaxed">
           <p className="border-l-4 border-primary pl-6">
-            I am a visual alchemist blending urban textures with digital precision. My work is a chaotic celebration of the imperfect, where glitch isn't an error—it's the medium.
+            Sou um alquimista visual misturando texturas urbanas com precisão digital. Meu trabalho é uma celebração caótica do imperfeito, onde o glitch não é um erro — é o meio.
           </p>
           <p>
-            Based in the vibrant intersections of culture and technology, I craft digital experiences that demand attention. No smooth transitions, no safe colors. Just raw, unfiltered creativity.
+            Baseado nas interseções vibrantes da cultura e tecnologia, crio experiências digitais que demandam atenção. Sem transições suaves, sem cores seguras. Apenas criatividade pura e sem filtros.
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
             <span className="px-3 py-1 bg-white/10 text-white font-mono text-sm border border-white/20">#CREATIVE_DIRECTION</span>

@@ -1,19 +1,36 @@
 
 "use client";
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
+const PsIcon = () => (
+  <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-24 md:h-24">
+    <rect width="100" height="100" rx="15" fill="#001e36" />
+    <text x="50" y="68" fill="#31a8ff" fontSize="48" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">Ps</text>
+  </svg>
+);
+
+const AeIcon = () => (
+  <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-24 md:h-24">
+    <rect width="100" height="100" rx="15" fill="#00005b" />
+    <text x="50" y="68" fill="#cf96fd" fontSize="48" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">Ae</text>
+  </svg>
+);
+
+const CapcutIcon = () => (
+  <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-24 md:h-24">
+    <rect width="100" height="100" rx="15" fill="#000000" />
+    <path d="M25 50 L50 25 L75 50 L50 75 Z" fill="#FFFFFF" />
+    <path d="M50 25 L75 50 L50 75" fill="none" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" />
+    <circle cx="50" cy="50" r="10" fill="#00FFCC" />
+  </svg>
+);
+
 const TOOLS = [
-  { name: "Photoshop", color: "#31A8FF", rotation: -5 },
-  { name: "Premiere Pro", color: "#EA77FF", rotation: 3 },
-  { name: "After Effects", color: "#9999FF", rotation: -2 },
-  { name: "Next.js", color: "#FFFFFF", rotation: 4 },
-  { name: "Tailwind CSS", color: "#38BDF8", rotation: -8 },
-  { name: "Firebase", color: "#FFCA28", rotation: 2 },
-  { name: "Figma", color: "#F24E1E", rotation: -4 },
-  { name: "Blender", color: "#E87D0D", rotation: 6 },
-  { name: "Genkit AI", color: "#12B886", rotation: -1 },
+  { name: "Photoshop", color: "#31A8FF", rotation: -5, Icon: PsIcon },
+  { name: "After Effects", color: "#9999FF", rotation: 3, Icon: AeIcon },
+  { name: "Capcut", color: "#000000", rotation: -2, Icon: CapcutIcon },
 ];
 
 export function StickerTools() {
@@ -29,7 +46,7 @@ export function StickerTools() {
     <section id="tools" className="relative py-32 px-6 overflow-hidden bg-[#22141F]">
       <div className="container mx-auto">
         <h2 className="font-headline text-6xl md:text-8xl font-black text-white mb-20 text-center uppercase tracking-tighter">
-          THE <span className="text-secondary">STACK</span>
+          HABILI<span className="text-secondary">DADES</span>
         </h2>
         
         <div className="flex flex-wrap justify-center gap-10 md:gap-20">
@@ -49,14 +66,12 @@ export function StickerTools() {
                 
                 <div 
                   className={cn(
-                    "relative px-8 py-4 bg-white/5 border-2 border-white/20 paper-tear transition-all duration-300",
-                    "group-hover:bg-white group-hover:text-black group-hover:border-transparent group-active:scale-95"
+                    "relative p-4 md:p-8 bg-white/5 border-2 border-white/20 paper-tear transition-all duration-300 flex items-center justify-center",
+                    "group-hover:bg-white group-active:scale-95"
                   )}
                   style={{ '--rotation': `${tool.rotation}deg` } as any}
                 >
-                  <span className="font-headline text-2xl md:text-3xl font-bold uppercase tracking-widest">
-                    {tool.name}
-                  </span>
+                  <tool.Icon />
                   
                   {/* Underneath 'Paper Tear' reveal color */}
                   <div 

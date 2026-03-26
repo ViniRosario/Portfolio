@@ -17,11 +17,11 @@ export default function Home() {
 
   // Simple scroll spy or navigation
   const navItems = [
-    { label: 'ABOUT', href: '#about' },
-    { label: 'SKILLS', href: '#skills' },
-    { label: 'STACK', href: '#tools' },
-    { label: 'WORKS', href: '#gallery' },
-    { label: 'CONNECT', href: '#contact' },
+    { label: 'SOBRE', href: '#about' },
+    { label: 'ESTILO', href: '#skills' },
+    { label: 'HABILIDADES', href: '#tools' },
+    { label: 'TRABALHOS', href: '#gallery' },
+    { label: 'CONTATO', href: '#contact' },
   ];
 
   if (!hasEntered) {

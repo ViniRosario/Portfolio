@@ -17,10 +17,10 @@ export function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           <div className="space-y-10">
             <h2 className="font-headline text-6xl md:text-8xl font-black text-white uppercase leading-none italic">
-              LET'S <span className="text-primary block not-italic glitch-text" data-text="CONNECT">CONNECT</span>
+              CONECTE-<span className="text-primary block not-italic glitch-text" data-text="SE">SE</span>
             </h2>
             <p className="font-body text-xl text-white/60 max-w-md">
-              Available for visual experimentation, chaotic collaborations, and high-impact digital projects. Don't be a stranger to the glitch.
+              Disponível para experimentação visual, colaborações caóticas e projetos digitais de alto impacto. Não seja um estranho ao glitch.
             </p>
             
             <div className="flex gap-6">
@@ -45,21 +45,21 @@ export function ContactSection() {
             <div className="relative">
               <input 
                 type="text" 
-                placeholder="YOUR_NAME"
+                placeholder="SEU_NOME"
                 className="w-full bg-white/5 border-2 border-white/10 px-6 py-4 text-white font-headline text-lg uppercase tracking-widest focus:border-primary focus:outline-none focus:bg-white/10 transition-all placeholder:text-white/20"
               />
             </div>
             <div className="relative">
               <input 
                 type="email" 
-                placeholder="YOUR_EMAIL"
+                placeholder="SEU_EMAIL"
                 className="w-full bg-white/5 border-2 border-white/10 px-6 py-4 text-white font-headline text-lg uppercase tracking-widest focus:border-primary focus:outline-none focus:bg-white/10 transition-all placeholder:text-white/20"
               />
             </div>
             <div className="relative">
               <textarea 
                 rows={4}
-                placeholder="THE_MESSAGE"
+                placeholder="A_MENSAGEM"
                 className="w-full bg-white/5 border-2 border-white/10 px-6 py-4 text-white font-headline text-lg uppercase tracking-widest focus:border-primary focus:outline-none focus:bg-white/10 transition-all placeholder:text-white/20"
               />
             </div>
@@ -67,7 +67,7 @@ export function ContactSection() {
               className="group relative w-full py-6 bg-primary text-white font-headline text-2xl font-black uppercase overflow-hidden transition-all active:scale-95"
             >
               <span className="relative z-10 flex items-center justify-center gap-4">
-                SEND_ENCRYPTED <Send size={24} />
+                ENVIAR_MENSAGEM <Send size={24} />
               </span>
               <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-300 -z-0" />
               {/* Noise overlay effect */}
@@ -82,7 +82,7 @@ export function ContactSection() {
       {/* Footer Text */}
       <div className="mt-40 text-center border-t border-white/10 py-10">
         <p className="font-mono text-xs text-white/30 uppercase tracking-[0.5em]">
-          NO REVOLUTION WITHOUT GLITCH. DESIGNED BY ROSARIO.
+          SEM REVOLUÇÃO SEM GLITCH. DESIGNED BY ROSARIO.
         </p>
       </div>
     </section>
