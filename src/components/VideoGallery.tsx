@@ -1,25 +1,35 @@
+
 "use client";
 
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
-import { ArrowLeft, Film, Palette, Layers, Monitor, Play, Search } from 'lucide-react';
+import { ArrowLeft, Palette, Layers, Monitor, Play, Search, X } from 'lucide-react';
+
+const SHORT_EDITS_VIDEOS = [
+  { id: 'se1', title: 'Edit 01', driveId: '1BYrQgXSZtPVEQ2iJpEQF6-CBnsaHsBnp' },
+  { id: 'se2', title: 'Edit 02', driveId: '1gWyXa6d6Gvqn8XACLKdJztdvz2eutqdn' },
+  { id: 'se3', title: 'Edit 03', driveId: '161H-v1lE7qLY0xEcfKlB896XwRvQ3SsH' },
+  { id: 'se4', title: 'Edit 04', driveId: '1tm_r4ENLdisq2ptZCrr1Ioyl7Rgh9O6S' },
+  { id: 'se5', title: 'Edit 05', driveId: '18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh' },
+];
 
 const VIDEO_CATEGORIES = [
-  { id: 'v1', title: 'SHORT EDITS', icon: Layers, desc: 'Vídeos dinâmicos para redes sociais.' },
-  { id: 'v2', title: 'LONG FORM', icon: Monitor, desc: 'Edições completas e narrativas.' },
+  { id: 'v1', title: 'SHORT EDITS', icon: Layers, desc: 'Vídeos dinâmicos para redes sociais.', items: SHORT_EDITS_VIDEOS },
+  { id: 'v2', title: 'LONG FORM', icon: Monitor, desc: 'Edições completas e narrativas.', items: [] },
 ];
 
 const DESIGN_CATEGORIES = [
-  { id: 'd1', title: 'BRANDING', icon: Palette, desc: 'Identidades visuais e logotipos.' },
-  { id: 'd2', title: 'THUMBNAILS', icon: Layers, desc: 'Artes focadas em alta retenção.' },
-  { id: 'd3', title: 'BANNERS', icon: Monitor, desc: 'Composições para web e eventos.' },
+  { id: 'd1', title: 'BRANDING', icon: Palette, desc: 'Identidades visuais e logotipos.', items: [] },
+  { id: 'd2', title: 'THUMBNAILS', icon: Layers, desc: 'Artes focadas em alta retenção.', items: [] },
+  { id: 'd3', title: 'BANNERS', icon: Monitor, desc: 'Composições para web e eventos.', items: [] },
 ];
 
 export function VideoGallery() {
   const [exploding, setExploding] = useState<string | null>(null);
   const [view, setView] = useState<'main' | 'video' | 'design'>('main');
+  const [selectedCatId, setSelectedCatId] = useState<string | null>(null);
   
   const videoImage = PlaceHolderImages.find(img => img.id === 'archive-video');
   const designImage = PlaceHolderImages.find(img => img.id === 'archive-design');
@@ -35,12 +45,19 @@ export function VideoGallery() {
   };
 
   const handleBack = () => {
-    setView('main');
+    if (selectedCatId) {
+      setSelectedCatId(null);
+    } else {
+      setView('main');
+    }
   };
+
+  const getDirectLink = (id: string) => `https://drive.google.com/uc?export=download&id=${id}`;
 
   if (view !== 'main') {
     const categories = view === 'video' ? VIDEO_CATEGORIES : DESIGN_CATEGORIES;
     const title = view === 'video' ? 'GALERIA DE VIDEOS' : 'GALERIA DE DESIGN';
+    const activeCategory = categories.find(c => c.id === selectedCatId);
 
     return (
       <section id="gallery" className="relative py-32 px-6 bg-[#120812] min-h-screen overflow-hidden">
@@ -49,42 +66,67 @@ export function VideoGallery() {
             onClick={handleBack}
             className="flex items-center gap-2 text-primary font-mono text-sm mb-12 hover:translate-x-[-8px] transition-transform group"
           >
-            <ArrowLeft size={16} /> [ VOLTAR_AO_INÍCIO ]
+            <ArrowLeft size={16} /> [ {selectedCatId ? 'VOLTAR_PARA_CATEGORIAS' : 'VOLTAR_AO_INÍCIO'} ]
           </button>
 
           <div className="mb-20">
-            <h2 className="font-headline text-5xl md:text-7xl font-black text-white uppercase tracking-tighter glitch-text" data-text={title}>
-              {title}
+            <h2 className="font-headline text-5xl md:text-7xl font-black text-white uppercase tracking-tighter glitch-text" data-text={activeCategory ? activeCategory.title : title}>
+              {activeCategory ? activeCategory.title : title}
             </h2>
             <div className="h-1 w-24 bg-primary mt-4" />
           </div>
 
-          <div className={cn(
-            "grid grid-cols-1 gap-8",
-            categories.length === 2 ? "md:grid-cols-2 max-w-4xl mx-auto" : "md:grid-cols-3"
-          )}>
-            {categories.map((cat) => (
-              <div 
-                key={cat.id}
-                className="group relative bg-white/[0.03] border-2 border-white/10 p-8 hover:border-primary transition-all cursor-pointer overflow-hidden aspect-square flex flex-col justify-end"
-              >
-                <div className="absolute top-6 left-6 opacity-20 group-hover:opacity-100 group-hover:text-primary transition-all">
-                  <cat.icon size={48} />
+          {selectedCatId && activeCategory ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {activeCategory.items.length > 0 ? (
+                activeCategory.items.map((item: any) => (
+                  <div key={item.id} className="group relative border-4 border-white bg-black aspect-[9/16] overflow-hidden shadow-[10px_10px_0px_#9214CC]">
+                    <video 
+                      src={getDirectLink(item.driveId)}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                      controls
+                      poster={`https://picsum.photos/seed/${item.id}/400/700`}
+                    />
+                    <div className="absolute bottom-4 left-4 right-4 bg-white text-black p-2 font-headline font-bold text-xs transform translate-y-full group-hover:translate-y-0 transition-transform">
+                      {item.title}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="col-span-full py-20 text-center">
+                  <p className="font-mono text-white/30 uppercase tracking-widest">Nenhum projeto adicionado nesta categoria ainda.</p>
                 </div>
-                
-                <div className="relative z-10">
-                  <h3 className="font-headline text-2xl font-bold text-white mb-2 group-hover:text-primary">{cat.title}</h3>
-                  <p className="font-body text-sm text-white/40 uppercase tracking-widest leading-tight">{cat.desc}</p>
-                </div>
+              )}
+            </div>
+          ) : (
+            <div className={cn(
+              "grid grid-cols-1 gap-8",
+              categories.length === 2 ? "md:grid-cols-2 max-w-4xl mx-auto" : "md:grid-cols-3"
+            )}>
+              {categories.map((cat) => (
+                <div 
+                  key={cat.id}
+                  onClick={() => setSelectedCatId(cat.id)}
+                  className="group relative bg-white/[0.03] border-2 border-white/10 p-8 hover:border-primary transition-all cursor-pointer overflow-hidden aspect-square flex flex-col justify-end"
+                >
+                  <div className="absolute top-6 left-6 opacity-20 group-hover:opacity-100 group-hover:text-primary transition-all">
+                    <cat.icon size={48} />
+                  </div>
+                  
+                  <div className="relative z-10">
+                    <h3 className="font-headline text-2xl font-bold text-white mb-2 group-hover:text-primary">{cat.title}</h3>
+                    <p className="font-body text-sm text-white/40 uppercase tracking-widest leading-tight">{cat.desc}</p>
+                  </div>
 
-                <div className="absolute -right-4 -bottom-4 text-white opacity-[0.02] font-black text-9xl select-none group-hover:opacity-[0.05] transition-opacity">
-                  {cat.id}
+                  <div className="absolute -right-4 -bottom-4 text-white opacity-[0.02] font-black text-9xl select-none group-hover:opacity-[0.05] transition-opacity">
+                    {cat.id}
+                  </div>
+                  
+                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors" />
                 </div>
-                
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors" />
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
         
         <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
@@ -106,7 +148,6 @@ export function VideoGallery() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
-          {/* Portal 1: Vídeo */}
           <div 
             className={cn(
               "group relative cursor-pointer transition-all duration-300",
@@ -123,11 +164,10 @@ export function VideoGallery() {
                 data-ai-hint={videoImage?.imageHint}
               />
               
-              {/* Preview Content on Cover */}
               <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/40 group-hover:bg-black/20 transition-colors">
                 <div className={cn(
                   "grid gap-4 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity",
-                  VIDEO_CATEGORIES.length === 2 ? "grid-cols-2" : "grid-cols-3"
+                  "grid-cols-2"
                 )}>
                   {VIDEO_CATEGORIES.map((cat) => (
                     <div key={cat.id} className="border border-white/20 bg-white/5 flex flex-col items-center justify-center gap-2 p-2 group-hover:border-primary/50 transition-colors">
@@ -154,7 +194,6 @@ export function VideoGallery() {
             </div>
           </div>
 
-          {/* Portal 2: Design */}
           <div 
             className={cn(
               "group relative cursor-pointer transition-all duration-300",
@@ -171,7 +210,6 @@ export function VideoGallery() {
                 data-ai-hint={designImage?.imageHint}
               />
 
-              {/* Preview Content on Cover */}
               <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/40 group-hover:bg-black/20 transition-colors">
                 <div className="grid grid-cols-3 gap-4 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity">
                   {DESIGN_CATEGORIES.map((cat) => (
