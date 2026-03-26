@@ -1,9 +1,10 @@
 
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
-import { Instagram, Linkedin, Twitter, Mail, Send } from 'lucide-react';
+import { Instagram, Linkedin, Twitter, Mail, Send, Loader2 } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
 
 const SOCIAL_LINKS = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/vinirosario/", label: "LinkedIn" },
@@ -13,6 +14,49 @@ const SOCIAL_LINKS = [
 ];
 
 export function ContactSection() {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        variant: "destructive",
+        title: "DADOS_INCOMPLETOS",
+        description: "Preencha todos os campos para transmitir sua mensagem.",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Simulação de envio (Processando sinal...)
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      toast({
+        title: "SINAL_TRANSMITIDO",
+        description: "Sua mensagem foi enviada com sucesso para o Vini.",
+      });
+      
+      setFormData({ name: '', email: '', message: '' });
+    } catch (err) {
+      toast({
+        variant: "destructive",
+        title: "ERRO_DE_CONEXÃO",
+        description: "Não foi possível transmitir os dados. Tente novamente.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="relative py-32 px-6 overflow-hidden bg-black">
       {/* Background Visuals */}
@@ -52,11 +96,13 @@ export function ContactSection() {
             </div>
           </div>
 
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="relative">
               <input 
                 type="text" 
                 placeholder="SEU_NOME"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full bg-white/5 border-2 border-white/10 px-6 py-4 text-white font-headline text-lg uppercase tracking-widest focus:border-primary focus:outline-none focus:bg-white/10 transition-all placeholder:text-white/20"
               />
             </div>
@@ -64,6 +110,8 @@ export function ContactSection() {
               <input 
                 type="email" 
                 placeholder="SEU_EMAIL"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full bg-white/5 border-2 border-white/10 px-6 py-4 text-white font-headline text-lg uppercase tracking-widest focus:border-primary focus:outline-none focus:bg-white/10 transition-all placeholder:text-white/20"
               />
             </div>
@@ -71,20 +119,24 @@ export function ContactSection() {
               <textarea 
                 rows={4}
                 placeholder="A_MENSAGEM"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="w-full bg-white/5 border-2 border-white/10 px-6 py-4 text-white font-headline text-lg uppercase tracking-widest focus:border-primary focus:outline-none focus:bg-white/10 transition-all placeholder:text-white/20"
               />
             </div>
             <button 
-              className="group relative w-full py-6 bg-primary text-white font-headline text-2xl font-black uppercase overflow-hidden transition-all active:scale-95"
+              type="submit"
+              disabled={isSubmitting}
+              className="group relative w-full py-6 bg-primary text-white font-headline text-2xl font-black uppercase overflow-hidden transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span className="relative z-10 flex items-center justify-center gap-4">
-                ENVIAR_MENSAGEM <Send size={24} />
+                {isSubmitting ? (
+                  <>ENVIANDO... <Loader2 size={24} className="animate-spin" /></>
+                ) : (
+                  <>ENVIAR_MENSAGEM <Send size={24} /></>
+                )}
               </span>
               <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-300 -z-0" />
-              {/* Noise overlay effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-10 pointer-events-none" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
-              }} />
             </button>
           </form>
         </div>

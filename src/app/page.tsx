@@ -7,6 +7,7 @@ import { AboutMe } from '@/components/AboutMe';
 import { StickerTools } from '@/components/StickerTools';
 import { VideoGallery } from '@/components/VideoGallery';
 import { ContactSection } from '@/components/ContactSection';
+import { Toaster } from '@/components/ui/toaster';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -88,6 +89,8 @@ export default function Home() {
         <VideoGallery />
         <ContactSection />
       </div>
+
+      <Toaster />
 
       {/* Global Noise Overlay */}
       <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] overflow-hidden">
