@@ -8,16 +8,28 @@ import { cn } from '@/lib/utils';
 import { ArrowLeft, Palette, Layers, Monitor, Play, Search, X } from 'lucide-react';
 
 const SHORT_EDITS_VIDEOS = [
-  { id: 'se1', title: 'Edit 01', driveId: '1BYrQgXSZtPVEQ2iJpEQF6-CBnsaHsBnp' },
-  { id: 'se2', title: 'Edit 02', driveId: '1gWyXa6d6Gvqn8XACLKdJztdvz2eutqdn' },
-  { id: 'se3', title: 'Edit 03', driveId: '161H-v1lE7qLY0xEcfKlB896XwRvQ3SsH' },
-  { id: 'se4', title: 'Edit 04', driveId: '1tm_r4ENLdisq2ptZCrr1Ioyl7Rgh9O6S' },
-  { id: 'se5', title: 'Edit 05', driveId: '18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh' },
+  { id: 'se1', title: 'Short Edit 01', driveId: '1BYrQgXSZtPVEQ2iJpEQF6-CBnsaHsBnp' },
+  { id: 'se2', title: 'Short Edit 02', driveId: '1gWyXa6d6Gvqn8XACLKdJztdvz2eutqdn' },
+  { id: 'se3', title: 'Short Edit 03', driveId: '161H-v1lE7qLY0xEcfKlB896XwRvQ3SsH' },
+  { id: 'se4', title: 'Short Edit 04', driveId: '1tm_r4ENLdisq2ptZCrr1Ioyl7Rgh9O6S' },
+  { id: 'se5', title: 'Short Edit 05', driveId: '18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh' },
 ];
 
 const VIDEO_CATEGORIES = [
-  { id: 'v1', title: 'SHORT EDITS', icon: Layers, desc: 'Vídeos dinâmicos para redes sociais.', items: SHORT_EDITS_VIDEOS },
-  { id: 'v2', title: 'LONG FORM', icon: Monitor, desc: 'Edições completas e narrativas.', items: [] },
+  { 
+    id: 'v1', 
+    title: 'SHORT EDITS', 
+    icon: Layers, 
+    desc: 'Vídeos dinâmicos para redes sociais.', 
+    items: SHORT_EDITS_VIDEOS 
+  },
+  { 
+    id: 'v2', 
+    title: 'LONG FORM', 
+    icon: Monitor, 
+    desc: 'Edições completas e narrativas.', 
+    items: [] 
+  },
 ];
 
 const DESIGN_CATEGORIES = [
@@ -165,10 +177,7 @@ export function VideoGallery() {
               />
               
               <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/40 group-hover:bg-black/20 transition-colors">
-                <div className={cn(
-                  "grid gap-4 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity",
-                  "grid-cols-2"
-                )}>
+                <div className="grid grid-cols-2 gap-4 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity">
                   {VIDEO_CATEGORIES.map((cat) => (
                     <div key={cat.id} className="border border-white/20 bg-white/5 flex flex-col items-center justify-center gap-2 p-2 group-hover:border-primary/50 transition-colors">
                       <cat.icon size={24} className="text-white group-hover:text-primary transition-colors" />
@@ -252,3 +261,4 @@ export function VideoGallery() {
     </section>
   );
 }
+
