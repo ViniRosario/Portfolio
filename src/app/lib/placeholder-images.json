@@ -1,0 +1,23 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "vini-profile",
+      "description": "Foto de perfil oficial do Vini Rosário",
+      "imageUrl": "https://picsum.photos/seed/vini_profile_new/800/1000",
+      "imageHint": "man profile"
+    },
+    {
+      "id": "archive-video",
+      "description": "Capa do portal de trabalhos de vídeo",
+      "imageUrl": "https://picsum.photos/seed/archive_v/1280/720",
+      "imageHint": "teal mountain landscape"
+    },
+    {
+      "id": "archive-design",
+      "description": "Colagem representativa do arquivo de design",
+      "imageUrl": "https://picsum.photos/seed/archive_d/1280/720",
+      "imageHint": "glitch art collage"
+    }
+  ]
+}
