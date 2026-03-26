@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
-import { Play, Search, X, ArrowLeft, Film, Palette, Layers, Monitor } from 'lucide-react';
+import { Play, Search, ArrowLeft, Film, Palette, Layers, Monitor } from 'lucide-react';
 
 const VIDEO_CATEGORIES = [
   { id: 'v1', title: 'SHOWREELS', icon: Film, desc: 'A seleção dos meus melhores momentos.' },
@@ -31,8 +31,10 @@ export function VideoGallery() {
     setTimeout(() => {
       setView(type);
       setExploding(null);
-      window.scrollTo({ top: document.getElementById('gallery')?.offsetTop, behavior: 'smooth' });
-    }, 800);
+      // Ensure we stay at the section level after transition
+      const el = document.getElementById('gallery');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 600);
   };
 
   const handleBack = () => {
@@ -85,7 +87,7 @@ export function VideoGallery() {
           </div>
         </div>
         
-        {/* Background visual for sub-view */}
+        {/* Sub-view background visual */}
         <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
       </section>
     );
@@ -93,15 +95,13 @@ export function VideoGallery() {
 
   return (
     <section id="gallery" className="relative py-32 px-6 bg-[#120812] overflow-hidden">
-      <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-      
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="mb-20 text-center lg:text-left">
           <h2 className="font-headline text-6xl md:text-8xl font-black text-white uppercase tracking-tighter glitch-text" data-text="TRABALHOS">
             TRABALHOS
           </h2>
           <p className="font-body text-xl text-primary/80 mt-4 max-w-2xl">
-            Acesse meus trabalhos mais recentes e meu portfolio completo.
+            Acesse meus trabalhos mais recentes e meu portfólio completo.
           </p>
         </div>
 
@@ -111,66 +111,79 @@ export function VideoGallery() {
           <div 
             className={cn(
               "group relative cursor-pointer transition-all duration-300",
-              exploding === 'video' && "scale-150 rotate-3 z-[60]"
+              exploding === 'video' && "scale-110 opacity-50 blur-sm"
             )}
             onClick={() => handlePortalClick('video')}
           >
-            <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#F40FC0] transition-all duration-500 overflow-hidden">
+            <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#F40FC0] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden">
               <Image
                 src={videoImage?.imageUrl || ""}
                 alt="Showreel Vídeo"
                 fill
-                className="object-cover contrast-125 saturate-150 group-hover:scale-105 transition-transform duration-700 brightness-75 group-hover:brightness-100"
+                className="object-cover contrast-125 saturate-150 group-hover:scale-110 transition-transform duration-1000 brightness-75 group-hover:brightness-100"
                 data-ai-hint={videoImage?.imageHint}
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-white flex items-center justify-center rounded-full group-hover:scale-110 group-hover:bg-primary transition-all duration-300 group-hover:animate-pulse">
+                <div className="w-20 h-20 bg-white flex items-center justify-center rounded-full group-hover:scale-110 group-hover:bg-primary transition-all duration-300 shadow-xl group-hover:animate-pulse">
                   <Play className="w-10 h-10 text-black fill-black" />
                 </div>
               </div>
-              <div className="absolute bottom-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker">
+              
+              <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker -rotate-2">
                 SHOWREELS & VIDEO PROJECTS
               </div>
-              <div className="absolute bottom-4 left-4 w-8 h-8 flex items-center justify-center bg-white text-black font-black text-xl leading-none">N</div>
+              
+              <div className="absolute bottom-4 left-4 w-10 h-10 flex items-center justify-center bg-white text-black font-black text-2xl border-2 border-black">
+                N
+              </div>
             </div>
-            <div className="absolute -inset-1 border border-white/5 opacity-0 group-hover:opacity-100 animate-glitch pointer-events-none" />
+            {/* Hover Glitch Effect Layer */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-primary mix-blend-overlay pointer-events-none transition-opacity" />
           </div>
 
           {/* Portal 2: Design */}
           <div 
             className={cn(
               "group relative cursor-pointer transition-all duration-300",
-              exploding === 'design' && "scale-150 -rotate-3 z-[60]"
+              exploding === 'design' && "scale-110 opacity-50 blur-sm"
             )}
             onClick={() => handlePortalClick('design')}
           >
-            <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#00FFF9] transition-all duration-500 overflow-hidden">
+            <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#00FFF9] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden">
               <Image
                 src={designImage?.imageUrl || ""}
                 alt="Arquivo Design"
                 fill
-                className="object-cover contrast-150 group-hover:scale-105 transition-transform duration-700 brightness-75 group-hover:brightness-100"
+                className="object-cover contrast-150 group-hover:scale-110 transition-transform duration-1000 brightness-75 group-hover:brightness-100"
                 data-ai-hint={designImage?.imageHint}
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-white flex items-center justify-center group-hover:scale-110 group-hover:bg-accent transition-all duration-300 group-hover:animate-pulse rotate-45">
+                <div className="w-20 h-20 bg-white flex items-center justify-center group-hover:scale-110 group-hover:bg-accent transition-all duration-300 shadow-xl group-hover:animate-pulse rotate-45">
                   <Search className="w-10 h-10 text-black -rotate-45" />
                 </div>
               </div>
-              <div className="absolute top-4 left-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker -rotate-2">
+
+              <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker rotate-3">
                 DESIGN ARCHIVE
               </div>
-              <div className="absolute bottom-4 left-4 w-8 h-8 flex items-center justify-center bg-white text-black font-black text-xl leading-none">D</div>
+
+              <div className="absolute bottom-4 left-4 w-10 h-10 flex items-center justify-center bg-white text-black font-black text-2xl border-2 border-black">
+                D
+              </div>
             </div>
-            <div className="absolute -inset-1 border border-white/5 opacity-0 group-hover:opacity-100 animate-glitch pointer-events-none" />
+            {/* Hover Glitch Effect Layer */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-secondary mix-blend-overlay pointer-events-none transition-opacity" />
           </div>
 
         </div>
       </div>
 
-      {/* Explosion/Burst Overlay */}
+      {/* Dramatic Transition Overlay */}
       {exploding && (
-        <div className="fixed inset-0 z-[100] bg-white animate-pixel-burst pointer-events-none" />
+        <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 bg-primary animate-pixel-burst" />
+          <div className="absolute inset-0 bg-[#120812] translate-y-full animate-[slide-up_0.6s_ease-out_forwards]" />
+        </div>
       )}
     </section>
   );
