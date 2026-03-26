@@ -3,6 +3,8 @@ import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export', // Ativa a exportação estática para o GitHub Pages
+  basePath: '/Portfolio', // IMPORTANTE: Deve ser exatamente o nome do seu repositório no GitHub
+  assetPrefix: '/Portfolio', // Garante que o CSS e JS carreguem da pasta correta
   images: {
     unoptimized: true, // Necessário para sites estáticos sem servidor de imagem
     remotePatterns: [

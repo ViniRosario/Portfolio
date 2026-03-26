@@ -1,38 +1,41 @@
 
 # Guia de Hospedagem - Vini's GlitchFolio
 
-Você tem duas excelentes opções para hospedar seu portfólio. Recomendo o **Firebase** por ser mais integrado, mas o **GitHub Pages** é uma ótima alternativa gratuita.
+Para resolver o problema de aparecer apenas o texto do README, siga estes passos:
 
 ---
 
-## Opção A: GitHub Pages (Grátis e Simples)
+## Passo a Passo para GitHub Pages
 
-1. **Repositório**: Crie um repositório no GitHub e suba seu código.
-2. **Configuração**: Vá em **Settings** > **Pages**.
-3. **Build and Deployment**: Em "Source", selecione **GitHub Actions**.
-4. **Workflow**: O GitHub sugerirá um template de "Next.js". Aceite-o. 
-   - O arquivo `next.config.ts` já está configurado com `output: 'export'`.
-   - O GitHub fará o build e o deploy automaticamente sempre que você der `git push`.
+1. **Configuração no GitHub**:
+   - Vá no seu repositório no GitHub.
+   - Clique em **Settings** > **Pages**.
+   - Em **Build and deployment** > **Source**, selecione **GitHub Actions**.
 
-*Nota: Se o seu repositório não for `seu-usuario.github.io` (ex: `seu-usuario.github.io/portfolio`), você precisará adicionar a propriedade `basePath: '/portfolio'` no `next.config.ts`.*
+2. **Criar o Workflow de Build**:
+   - O GitHub vai sugerir um card chamado "Next.js". Clique em **Configure**.
+   - Ele vai criar um arquivo chamado `.github/workflows/nextjs.yml`.
+   - **IMPORTANTE**: O arquivo `next.config.ts` já está configurado com `basePath: '/Portfolio'`. Certifique-se de que o nome do repositório no GitHub seja exatamente `Portfolio` (com P maiúsculo como no seu print).
+
+3. **Commit e Push**:
+   - Salve as alterações aqui no Firebase Studio.
+   - Faça o commit e push para o GitHub.
+   - A aba **Actions** no seu GitHub mostrará o progresso do build. Quando terminar (ficar verde), o site estará online.
 
 ---
 
-## Opção B: Firebase App Hosting (Recomendado)
+## Se preferir Firebase App Hosting (Mais Automático)
 
 1. Acesse o [Console do Firebase](https://console.firebase.google.com/).
 2. Vá em **Build** > **App Hosting**.
 3. Conecte seu GitHub e selecione o repositório.
-4. O Firebase cuidará de tudo (incluindo o suporte a funções de servidor se você precisar no futuro).
+4. O Firebase detectará o Next.js e fará tudo sozinho, sem precisar configurar `basePath`.
 
 ---
 
-## Configuração de E-mail (Importante)
+## Configuração de E-mail
 
-Independente de onde você hospedar, para receber as mensagens do formulário no seu e-mail:
-1. No Console do Firebase, vá em **Extensions**.
-2. Instale a extensão **Trigger Email**.
-3. Configure para observar a coleção `contactMessages`.
-4. Defina `jvinicius449@gmail.com` como destinatário.
-
-As mensagens enviadas pelos usuários agora são salvas no seu **Firestore Database**.
+As mensagens enviadas pelo formulário são salvas no **Firestore Database**. Para receber no e-mail:
+1. No Console do Firebase, instale a extensão **Trigger Email**.
+2. Configure para observar a coleção `contactMessages`.
+3. Defina `jvinicius449@gmail.com` como destinatário.
