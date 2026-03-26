@@ -5,6 +5,13 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import { Instagram, Linkedin, Twitter, Mail, Send } from 'lucide-react';
 
+const SOCIAL_LINKS = [
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/vini_rosarioo/", label: "Instagram" },
+  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Mail, href: "#", label: "Email" },
+];
+
 export function ContactSection() {
   return (
     <section id="contact" className="relative py-32 px-6 overflow-hidden bg-black">
@@ -25,13 +32,16 @@ export function ContactSection() {
             </p>
             
             <div className="flex gap-6">
-              {[Instagram, Linkedin, Twitter, Mail].map((Icon, idx) => (
+              {SOCIAL_LINKS.map((social, idx) => (
                 <a 
                   key={idx}
-                  href="#" 
+                  href={social.href}
+                  target={social.href.startsWith('http') ? "_blank" : undefined}
+                  rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined}
                   className="w-16 h-16 flex items-center justify-center border-2 border-white/20 hover:border-primary hover:text-primary transition-all duration-300 hover:rotate-6 hover:scale-110 bg-white/5"
+                  aria-label={social.label}
                 >
-                  <Icon size={24} />
+                  <social.icon size={24} />
                 </a>
               ))}
             </div>
