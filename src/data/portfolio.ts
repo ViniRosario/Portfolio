@@ -2,9 +2,9 @@
 import { Layers, Monitor, Palette, Smartphone, Tv } from 'lucide-react';
 
 export const REELS_VIDEOS = [
-  { id: 're1', title: 'REELS 01', driveId: '1tm_r4ENLdisq2ptZCrr1Ioyl7Rgh9O6S' },
+  { id: 're1', title: 'REELS 01', driveId: '18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh' },
   { id: 're2', title: 'REELS 02', driveId: '161H-v1lE7qLY0xEcfKlB896XwRvQ3SsH' },
-  { id: 're3', title: 'REELS 03', driveId: '18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh' },
+  { id: 're3', title: 'REELS 03', driveId: '1tm_r4ENLdisq2ptZCrr1Ioyl7Rgh9O6S' },
 ];
 
 export const FULLSCREEN_VIDEOS = [
@@ -26,6 +26,12 @@ export const BRANDING_ITEMS = [
 
 export const BANNERS_ITEMS = [
   { id: 'ba1', title: 'BANNER 01', driveId: '14R0tVS73EJvq2sHc5lQhh4Uig2FGr1tp' },
+  { id: 'ba2', title: 'BANNER 02', driveId: '1XADyBUlsNYd3MUSajjiJDHlRPAydnwa_' },
+  { id: 'ba3', title: 'BANNER 03', driveId: '11hBlV41zeVB4ht_q0xaOj1xmDQhK1h3f' },
+  { id: 'ba4', title: 'BANNER 04', driveId: '1gGKFNUvN5Xp3hoz9OOMcXQBVsUAoYC5u' },
+  { id: 'ba5', title: 'BANNER 05', driveId: '1vPjGkCxXilO1ZZV5jGqAHNDdGLCo5XPg' },
+  { id: 'ba6', title: 'BANNER 06', driveId: '1MNYBFlOoF1CtZBhAtd74uNAj-TCB2uSk' },
+  { id: 'ba7', title: 'BANNER 07', driveId: '1M7uPFxztG6hqtdTNAHCx-oh1M3ErMfDp' },
 ];
 
 export const VIDEO_CATEGORIES = [
