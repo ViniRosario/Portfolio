@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -22,32 +23,38 @@ export function GlitchHero({ onEnter }: { onEnter: () => void }) {
 
   return (
     <div className={cn(
-      "fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0d040d] transition-all duration-500 overflow-hidden",
+      "fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0d040d] transition-all duration-500 overflow-hidden cursor-none",
       isEntering && "animate-pixel-burst pointer-events-none"
     )}>
       {/* Background Lighting Blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div 
-          className="absolute w-[600px] h-[600px] rounded-full bg-primary/20 bg-blur-light animate-float-blob"
-          style={{ left: '10%', top: '20%' }} 
+          className="absolute w-[600px] h-[600px] rounded-full bg-primary/25 bg-blur-light animate-float-blob"
+          style={{ left: '5%', top: '15%' }} 
         />
         <div 
           className="absolute w-[500px] h-[500px] rounded-full bg-secondary/20 bg-blur-light animate-float-blob"
-          style={{ right: '15%', bottom: '10%', animationDelay: '-7s' }} 
+          style={{ right: '10%', bottom: '15%', animationDelay: '-7s' }} 
         />
         
         {/* Interactive Flashlight Effect */}
         <div 
-          className="absolute inset-0 z-10 opacity-60 mix-blend-screen transition-opacity duration-300"
+          className="absolute inset-0 z-10 opacity-70 mix-blend-screen transition-opacity duration-300"
           style={{
-            background: `radial-gradient(circle 500px at ${mousePos.x}px ${mousePos.y}px, rgba(146, 20, 204, 0.3) 0%, transparent 100%)`,
+            background: `radial-gradient(circle 500px at ${mousePos.x}px ${mousePos.y}px, rgba(146, 20, 204, 0.4) 0%, transparent 100%)`,
           }}
         />
       </div>
 
+      {/* Custom Cursor Light */}
+      <div 
+        className="fixed w-4 h-4 bg-white rounded-full pointer-events-none z-50 blur-[2px]"
+        style={{ left: mousePos.x, top: mousePos.y, transform: 'translate(-50%, -50%)' }}
+      />
+
       {/* Main Content */}
       <div className="relative z-20 group cursor-pointer" onClick={handleEnter}>
-        <div className="absolute -inset-10 bg-primary/5 blur-3xl rounded-full scale-150 group-hover:bg-primary/10 transition-colors" />
+        <div className="absolute -inset-10 bg-primary/10 blur-3xl rounded-full scale-150 group-hover:bg-primary/20 transition-colors" />
         
         <h1 
           className="font-headline text-7xl md:text-9xl font-bold tracking-tighter text-white uppercase glitch-text relative"
@@ -76,7 +83,7 @@ export function GlitchHero({ onEnter }: { onEnter: () => void }) {
       </div>
 
       {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.05] z-10" style={{
+      <div className="absolute inset-0 pointer-events-none opacity-[0.08] z-10" style={{
         backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.2) 1px, transparent 0)',
         backgroundSize: '30px 30px'
       }} />

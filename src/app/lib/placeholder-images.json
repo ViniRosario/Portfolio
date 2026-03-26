@@ -4,24 +4,24 @@
     {
       "id": "vini-profile",
       "description": "Foto de perfil oficial do Vini Rosário",
-      "imageUrl": "https://drive.google.com/uc?export=download&id=1kgONHYcScEEWFs7KFaPDirf-aYxm6hkI",
+      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&h=800&auto=format&fit=crop",
       "imageHint": "man profile"
     },
     {
       "id": "capcut-icon",
       "description": "Logo oficial do CapCut",
-      "imageUrl": "https://drive.google.com/uc?export=download&id=1MPFuZCof_5rBIQ6amEMeUAeyKqdXtJXd",
-      "imageHint": "capcut logo"
+      "imageUrl": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=200&h=200&auto=format&fit=crop",
+      "imageHint": "video editing app icon"
     },
     {
       "id": "archive-video",
-      "description": "Capa do Portal de Vídeos (Showreel)",
+      "description": "Capa do Portal de Vídeos",
       "imageUrl": "https://picsum.photos/seed/archive_v/1280/720",
       "imageHint": "teal mountain landscape"
     },
     {
       "id": "archive-design",
-      "description": "Capa do Portal de Design (Portfolio de Artes)",
+      "description": "Capa do Portal de Design",
       "imageUrl": "https://picsum.photos/seed/archive_d/1280/720",
       "imageHint": "glitch art collage"
     },
