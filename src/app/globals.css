@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 260 25% 10%;
+    --background: 260 25% 6%;
     --foreground: 0 0% 98%;
     --card: 260 25% 12%;
     --card-foreground: 0 0% 98%;
@@ -33,11 +33,25 @@
   }
   body {
     @apply bg-background text-foreground selection:bg-primary selection:text-white overflow-x-hidden;
-    background-color: #120812;
+    background-color: #0d040d;
     background-image: 
       radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
     background-size: 40px 40px;
   }
+}
+
+@keyframes float-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  33% { transform: translate(10%, -10%) scale(1.2); opacity: 0.5; }
+  66% { transform: translate(-5%, 15%) scale(0.8); opacity: 0.2; }
+}
+
+.animate-float-blob {
+  animation: float-blob 20s infinite ease-in-out;
+}
+
+.bg-blur-light {
+  filter: blur(100px);
 }
 
 @keyframes glitch {
@@ -47,17 +61,6 @@
   60% { transform: translate(2px, 2px); }
   80% { transform: translate(2px, -2px); }
   100% { transform: translate(0); }
-}
-
-@keyframes float-light {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-  33% { transform: translate(10%, 10%) scale(1.2); opacity: 0.5; }
-  66% { transform: translate(-5%, 15%) scale(0.8); opacity: 0.2; }
-}
-
-@keyframes pulse-fast {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.8; }
 }
 
 .animate-glitch {
@@ -132,11 +135,6 @@
     0% 5%, 5% 0%, 15% 7%, 25% 2%, 35% 8%, 45% 3%, 55% 9%, 65% 4%, 75% 10%, 85% 5%, 95% 10%, 100% 5%, 
     100% 95%, 95% 100%, 85% 92%, 75% 98%, 65% 91%, 55% 97%, 45% 90%, 35% 96%, 25% 89%, 15% 95%, 5% 88%, 0% 95%
   );
-}
-
-.bg-blur-blob {
-  filter: blur(80px);
-  animation: float-light 10s infinite ease-in-out;
 }
 
 .sticker {

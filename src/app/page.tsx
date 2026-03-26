@@ -35,41 +35,27 @@ export default function Home() {
   }
 
   return (
-    <main className="relative min-h-screen bg-[#120812] selection:bg-primary selection:text-white">
+    <main className="relative min-h-screen bg-[#0d040d] selection:bg-primary selection:text-white">
       {/* Dynamic Lighting Background */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div 
-          className="absolute w-[600px] h-[600px] rounded-full bg-primary/20 bg-blur-blob"
-          style={{ 
-            left: '10%', 
-            top: '20%',
-            animationDelay: '0s'
-          }} 
+          className="absolute w-[800px] h-[800px] rounded-full bg-primary/20 bg-blur-light animate-float-blob"
+          style={{ left: '5%', top: '10%' }} 
         />
         <div 
-          className="absolute w-[500px] h-[500px] rounded-full bg-secondary/20 bg-blur-blob"
-          style={{ 
-            right: '10%', 
-            bottom: '20%',
-            animationDelay: '-2s'
-          }} 
+          className="absolute w-[600px] h-[600px] rounded-full bg-secondary/20 bg-blur-light animate-float-blob"
+          style={{ right: '10%', bottom: '15%', animationDelay: '-5s' }} 
         />
         <div 
-          className="absolute w-[400px] h-[400px] rounded-full bg-accent/10 bg-blur-blob"
-          style={{ 
-            left: '50%', 
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-            animationDelay: '-5s'
-          }} 
+          className="absolute w-[400px] h-[400px] rounded-full bg-accent/10 bg-blur-light animate-float-blob"
+          style={{ left: '40%', top: '50%', animationDelay: '-10s' }} 
         />
         
-        {/* Mouse Follow Light */}
+        {/* Mouse Follow Spotlight */}
         <div 
-          className="absolute w-[800px] h-[800px] rounded-full pointer-events-none z-10 opacity-30 mix-blend-screen"
+          className="absolute inset-0 pointer-events-none z-10 opacity-30 mix-blend-screen"
           style={{
-            background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, rgba(146, 20, 204, 0.15) 0%, transparent 50%)`,
-            transition: 'background 0.1s ease-out'
+            background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, rgba(146, 20, 204, 0.4) 0%, transparent 40%)`,
           }}
         />
       </div>
