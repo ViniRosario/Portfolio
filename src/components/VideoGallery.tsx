@@ -182,10 +182,6 @@ export function VideoGallery() {
               <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker -rotate-2">
                 VIDEO PROJECTS
               </div>
-              
-              <div className="absolute bottom-4 left-4 w-10 h-10 flex items-center justify-center bg-white text-black font-black text-2xl border-2 border-black">
-                N
-              </div>
             </div>
           </div>
 
@@ -225,10 +221,6 @@ export function VideoGallery() {
 
               <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker rotate-3">
                 DESIGN ARCHIVE
-              </div>
-
-              <div className="absolute bottom-4 left-4 w-10 h-10 flex items-center justify-center bg-white text-black font-black text-2xl border-2 border-black">
-                D
               </div>
             </div>
           </div>
