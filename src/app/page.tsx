@@ -37,6 +37,7 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-[#0d040d] selection:bg-primary selection:text-white overflow-x-hidden">
+      {/* Global Background Lighting Blobs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div 
           className="absolute w-[800px] h-[800px] rounded-full bg-primary/10 bg-blur-light animate-float-blob"
@@ -46,8 +47,13 @@ export default function Home() {
           className="absolute w-[700px] h-[700px] rounded-full bg-secondary/10 bg-blur-light animate-float-blob"
           style={{ right: '-5%', bottom: '10%', animationDelay: '-5s' }} 
         />
+        <div 
+          className="absolute w-[600px] h-[600px] rounded-full bg-accent/5 bg-blur-light animate-float-blob"
+          style={{ left: '40%', top: '40%', animationDelay: '-10s' }} 
+        />
       </div>
 
+      {/* Interactive Spotlight Overlay */}
       <div 
         className="fixed inset-0 pointer-events-none z-[60] opacity-30 mix-blend-screen"
         style={{
@@ -75,6 +81,7 @@ export default function Home() {
         </button>
       </nav>
 
+      {/* Fullscreen Mobile Menu Overlay */}
       <div className={cn(
         "fixed inset-0 z-[70] bg-primary/95 backdrop-blur-md transition-all duration-500 flex flex-col items-center justify-center",
         isMenuOpen ? "translate-x-0" : "translate-x-full"
@@ -111,6 +118,7 @@ export default function Home() {
 
       <Toaster />
 
+      {/* Grain/Noise Overlay */}
       <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.04] overflow-hidden">
         <div className="absolute inset-0 bg-repeat bg-center" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
