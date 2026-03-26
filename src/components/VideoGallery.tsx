@@ -103,10 +103,10 @@ export function VideoGallery() {
                 <div 
                   key={cat.id}
                   onClick={() => setSelectedCatId(cat.id)}
-                  className="group relative bg-black border-4 border-white p-8 hover:border-primary transition-all cursor-pointer overflow-hidden aspect-square flex flex-col justify-end shadow-[10px_10px_0px_#9214CC]"
+                  className="group relative bg-black border-4 border-white p-8 hover:border-primary transition-all cursor-pointer overflow-hidden aspect-square flex flex-col justify-end shadow-[10px_10px_0px_#9214CC] hover:shadow-[15px_15px_0px_#F40FC0]"
                 >
                   {/* Category Preview Pattern */}
-                  {cat.items && cat.items.length > 0 && (
+                  {cat.items && cat.items.length > 0 ? (
                     <div className="absolute inset-0 z-0">
                       <Image 
                         src={getThumbnailUrl(cat.items[0].driveId)}
@@ -114,6 +114,10 @@ export function VideoGallery() {
                         fill
                         className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-75 transition-all duration-700"
                       />
+                    </div>
+                  ) : (
+                    <div className="absolute inset-0 z-0 opacity-20">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#9214CC,transparent)]" />
                     </div>
                   )}
                   
