@@ -26,8 +26,8 @@ export function VideoGallery() {
       
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="mb-20 text-center lg:text-left">
-          <h2 className="font-headline text-6xl md:text-8xl font-black text-white uppercase tracking-tighter glitch-text" data-text="O ARQUIVO">
-            O ARQUIVO
+          <h2 className="font-headline text-6xl md:text-8xl font-black text-white uppercase tracking-tighter glitch-text" data-text="TRABALHOS">
+            TRABALHOS
           </h2>
           <p className="font-body text-xl text-primary/80 mt-4 max-w-2xl">
             Acesse meus trabalhos mais recentes e meu portfolio completo.
