@@ -13,7 +13,6 @@ export function VideoGallery() {
   const [view, setView] = useState<'main' | 'video' | 'design'>('main');
   const [selectedCatId, setSelectedCatId] = useState<string | null>(null);
   
-  const videoImage = PlaceHolderImages.find(img => img.id === 'archive-video');
   const designImage = PlaceHolderImages.find(img => img.id === 'archive-design');
 
   const handlePortalClick = (type: 'video' | 'design') => {
@@ -35,13 +34,13 @@ export function VideoGallery() {
   };
 
   const getPreviewLink = (id: string) => `https://drive.google.com/file/d/${id}/preview`;
+  const getThumbnailUrl = (id: string) => `https://drive.google.com/thumbnail?id=${id}&sz=w1280`;
 
   if (view !== 'main') {
     const categories = view === 'video' ? VIDEO_CATEGORIES : DESIGN_CATEGORIES;
     const title = view === 'video' ? 'GALERIA DE VÍDEOS' : 'GALERIA DE DESIGN';
     const activeCategory = categories.find(c => c.id === selectedCatId);
     
-    // Dynamic aspect ratio based on category selection
     const aspectClass = activeCategory && 'aspect' in activeCategory && activeCategory.aspect === 'fullscreen' 
       ? "aspect-video" 
       : "aspect-[9/16]";
@@ -153,19 +152,29 @@ export function VideoGallery() {
             )}
             onClick={() => handlePortalClick('video')}
           >
-            <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#F40FC0] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden">
-              <Image
-                src={videoImage?.imageUrl || ""}
-                alt="Showreel Vídeo"
-                fill
-                className="object-cover contrast-125 saturate-150 group-hover:scale-110 transition-transform duration-1000 brightness-50 group-hover:brightness-75"
-                data-ai-hint={videoImage?.imageHint}
-              />
+            <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#F40FC0] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden flex">
+              {/* Split Previews: Reels 01 on Left, Video 01 on Right */}
+              <div className="relative w-1/2 h-full border-r-4 border-white overflow-hidden">
+                <Image
+                  src={getThumbnailUrl('161H-v1lE7qLY0xEcfKlB896XwRvQ3SsH')}
+                  alt="Reels 01 Preview"
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
+                />
+              </div>
+              <div className="relative w-1/2 h-full overflow-hidden">
+                <Image
+                  src={getThumbnailUrl('1BYrQgXSZtPVEQ2iJpEQF6-CBnsaHsBnp')}
+                  alt="Vídeo 01 Fullscreen Preview"
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
+                />
+              </div>
               
-              <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/40 group-hover:bg-black/20 transition-colors">
+              <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/40 group-hover:bg-transparent transition-colors z-20">
                 <div className="grid grid-cols-2 gap-4 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity">
                   {VIDEO_CATEGORIES.map((cat) => (
-                    <div key={cat.id} className="border border-white/20 bg-white/5 flex flex-col items-center justify-center gap-2 p-2 group-hover:border-primary/50 transition-colors">
+                    <div key={cat.id} className="border border-white/20 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center gap-2 p-2 group-hover:border-primary/50 transition-colors">
                       <cat.icon size={24} className="text-white group-hover:text-primary transition-colors" />
                       <span className="font-mono text-[8px] md:text-[10px] text-white/70 text-center uppercase tracking-tighter">
                         {cat.title}
@@ -175,12 +184,12 @@ export function VideoGallery() {
                 </div>
               </div>
 
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <Play size={64} className="text-white fill-white" />
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-30 pointer-events-none">
+                <Play size={64} className="text-white fill-white drop-shadow-2xl" />
               </div>
               
-              <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker -rotate-2">
-                VIDEO PROJECTS
+              <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker -rotate-2 z-40">
+                VIDEO_GALLERY
               </div>
             </div>
           </div>
@@ -202,10 +211,10 @@ export function VideoGallery() {
                 data-ai-hint={designImage?.imageHint}
               />
 
-              <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/40 group-hover:bg-black/20 transition-colors">
+              <div className="absolute inset-0 flex items-center justify-center p-8 bg-black/40 group-hover:bg-black/20 transition-colors z-20">
                 <div className="grid grid-cols-3 gap-4 w-full h-full opacity-60 group-hover:opacity-100 transition-opacity">
                   {DESIGN_CATEGORIES.map((cat) => (
-                    <div key={cat.id} className="border border-white/20 bg-white/5 flex flex-col items-center justify-center gap-2 p-2 group-hover:border-accent/50 transition-colors">
+                    <div key={cat.id} className="border border-white/20 bg-black/50 backdrop-blur-sm flex flex-col items-center justify-center gap-2 p-2 group-hover:border-accent/50 transition-colors">
                       <cat.icon size={24} className="text-white group-hover:text-accent transition-colors" />
                       <span className="font-mono text-[8px] md:text-[10px] text-white/70 text-center uppercase tracking-tighter">
                         {cat.title}
@@ -215,12 +224,12 @@ export function VideoGallery() {
                 </div>
               </div>
 
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <Search size={64} className="text-white" />
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-30 pointer-events-none">
+                <Search size={64} className="text-white drop-shadow-2xl" />
               </div>
 
-              <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker rotate-3">
-                DESIGN ARCHIVE
+              <div className="absolute top-4 right-4 bg-primary text-white px-6 py-2 font-headline font-black text-sm uppercase tracking-widest sticker rotate-3 z-40">
+                DESIGN_ARCHIVE
               </div>
             </div>
           </div>
