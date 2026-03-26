@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -34,9 +33,9 @@
   }
   body {
     @apply bg-background text-foreground selection:bg-primary selection:text-white overflow-x-hidden;
-    background-color: #22141F;
+    background-color: #120812;
     background-image: 
-      radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+      radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
     background-size: 40px 40px;
   }
 }
@@ -50,23 +49,15 @@
   100% { transform: translate(0); }
 }
 
-@keyframes noise {
-  0% { transform: translateX(0); }
-  10% { transform: translateX(-1px); }
-  20% { transform: translateX(1px); }
-  30% { transform: translateX(-2px); }
-  40% { transform: translateX(2px); }
-  50% { transform: translateX(-1px); }
-  60% { transform: translateX(1px); }
-  70% { transform: translateX(-2px); }
-  80% { transform: translateX(2px); }
-  90% { transform: translateX(-1px); }
-  100% { transform: translateX(0); }
+@keyframes float-light {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  33% { transform: translate(10%, 10%) scale(1.2); opacity: 0.5; }
+  66% { transform: translate(-5%, 15%) scale(0.8); opacity: 0.2; }
 }
 
-@keyframes slide-up {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
+@keyframes pulse-fast {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
 }
 
 .animate-glitch {
@@ -143,6 +134,11 @@
   );
 }
 
+.bg-blur-blob {
+  filter: blur(80px);
+  animation: float-light 10s infinite ease-in-out;
+}
+
 .sticker {
   transform: rotate(var(--rotation, 0deg));
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -151,4 +147,3 @@
 .sticker:hover {
   transform: scale(1.1) rotate(calc(var(--rotation, 0deg) + 5deg));
 }
-

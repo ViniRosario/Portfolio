@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -8,14 +7,22 @@ import { StickerTools } from '@/components/StickerTools';
 import { VideoGallery } from '@/components/VideoGallery';
 import { ContactSection } from '@/components/ContactSection';
 import { Toaster } from '@/components/ui/toaster';
-import { Menu, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function Home() {
   const [hasEntered, setHasEntered] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // Simple scroll spy or navigation
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   const navItems = [
     { label: 'SOBRE', href: '#about' },
     { label: 'HABILIDADES', href: '#tools' },
@@ -28,7 +35,45 @@ export default function Home() {
   }
 
   return (
-    <main className="relative min-h-screen bg-[#22141F] selection:bg-primary selection:text-white">
+    <main className="relative min-h-screen bg-[#120812] selection:bg-primary selection:text-white">
+      {/* Dynamic Lighting Background */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div 
+          className="absolute w-[600px] h-[600px] rounded-full bg-primary/20 bg-blur-blob"
+          style={{ 
+            left: '10%', 
+            top: '20%',
+            animationDelay: '0s'
+          }} 
+        />
+        <div 
+          className="absolute w-[500px] h-[500px] rounded-full bg-secondary/20 bg-blur-blob"
+          style={{ 
+            right: '10%', 
+            bottom: '20%',
+            animationDelay: '-2s'
+          }} 
+        />
+        <div 
+          className="absolute w-[400px] h-[400px] rounded-full bg-accent/10 bg-blur-blob"
+          style={{ 
+            left: '50%', 
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            animationDelay: '-5s'
+          }} 
+        />
+        
+        {/* Mouse Follow Light */}
+        <div 
+          className="absolute w-[800px] h-[800px] rounded-full pointer-events-none z-10 opacity-30 mix-blend-screen"
+          style={{
+            background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, rgba(146, 20, 204, 0.15) 0%, transparent 50%)`,
+            transition: 'background 0.1s ease-out'
+          }}
+        />
+      </div>
+
       {/* Persistent Navigation */}
       <nav className="fixed top-0 left-0 w-full z-40 p-6 flex justify-between items-start mix-blend-difference">
         <a href="#" className="flex flex-col group">
@@ -83,7 +128,7 @@ export default function Home() {
       </div>
 
       {/* Content Sections */}
-      <div className="relative">
+      <div className="relative z-10">
         <AboutMe />
         <StickerTools />
         <VideoGallery />
