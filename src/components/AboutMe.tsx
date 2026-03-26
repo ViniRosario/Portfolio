@@ -27,14 +27,14 @@ export function AboutMe() {
         
         {/* Collage elements */}
         <div className="absolute -bottom-6 -right-6 bg-accent text-background px-4 py-2 font-headline font-bold -rotate-6 sticker">
-          #RETENTION_MASTER
+          export project
         </div>
         <div className="absolute -top-8 -left-8 bg-primary text-white px-4 py-2 font-headline font-bold rotate-12 sticker">
           new project
         </div>
       </div>
 
-      <div className="w-full lg:w-1/2 max-w-2xl space-y-8 z-10">
+      <div className="w-full lg:w-1/2 max-max-2xl space-y-8 z-10">
         <h2 className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tight text-white">
           <span className="text-primary block">SOBRE</span>
           <span className="inline-block relative">
