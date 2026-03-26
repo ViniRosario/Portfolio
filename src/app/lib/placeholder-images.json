@@ -1,3 +1,4 @@
+
 {
   "placeholderImages": [
     {
@@ -14,13 +15,13 @@
     },
     {
       "id": "archive-video",
-      "description": "Showreel de vídeo com paisagem teal saturada",
+      "description": "Capa do Portal de Vídeos (Showreel)",
       "imageUrl": "https://picsum.photos/seed/archive_v/1280/720",
       "imageHint": "teal mountain landscape"
     },
     {
       "id": "archive-design",
-      "description": "Colagem de design gráfico glitch rosa e azul",
+      "description": "Capa do Portal de Design (Portfolio de Artes)",
       "imageUrl": "https://picsum.photos/seed/archive_d/1280/720",
       "imageHint": "glitch art collage"
     },
