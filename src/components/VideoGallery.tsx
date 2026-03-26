@@ -80,7 +80,7 @@ export function VideoGallery() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {activeCategory.items.length > 0 ? (
                 activeCategory.items.map((item: any) => (
-                  <div key={item.id} className="group relative border-4 border-white bg-black aspect-[9/16] overflow-hidden shadow-[10px_10px_0px_#9214CC]">
+                  <div key={item.id} className="group relative border-4 border-white bg-black aspect-[9/16] overflow-hidden shadow-[10px_10px_0px_#9214CC] hover:shadow-[15px_15px_0px_#F40FC0] transition-all">
                     <video 
                       src={getDirectLink(item.driveId)}
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
@@ -94,7 +94,7 @@ export function VideoGallery() {
                 ))
               ) : (
                 <div className="col-span-full py-20 text-center">
-                  <p className="font-mono text-white/30 uppercase tracking-widest">Nenhum projeto adicionado nesta categoria ainda.</p>
+                  <p className="font-mono text-white/30 uppercase tracking-widest animate-pulse">Nenhum projeto adicionado nesta categoria ainda.</p>
                 </div>
               )}
             </div>
