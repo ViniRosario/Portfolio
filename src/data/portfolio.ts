@@ -8,8 +8,9 @@ export const REELS_VIDEOS = [
 ];
 
 export const FULLSCREEN_VIDEOS = [
-  { id: 'fs1', title: 'VÍDEO 01', driveId: '1BYrQgXSZtPVEQ2iJpEQF6-CBnsaHsBnp' },
-  { id: 'fs2', title: 'VÍDEO 02', driveId: '1gWyXa6d6Gvqn8XACLKdJztdvz2eutqdn' },
+  { id: 'fs1', title: 'VÍDEO 01', driveId: '1DerTsieiiaL86gOp5laB8C_U0vX34wxd' },
+  { id: 'fs2', title: 'VÍDEO 02', driveId: '1apLNhfWEHJ6XqQM0Jx3dt7nxAstW-X4F' },
+  { id: 'fs3', title: 'VÍDEO 03', driveId: '1PNp7k-CYlWQPlKShPpqg-GgHBoW2cWNg' },
 ];
 
 export const BRANDING_ITEMS = [
