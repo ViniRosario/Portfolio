@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
-import { Instagram, Linkedin, Twitter, Mail, Send, Loader2 } from 'lucide-react';
+import { Instagram, Linkedin, Twitter, Mail, Send, Loader2, MessageSquare, Copy } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { useFirestore } from '@/firebase';
 import { collection, serverTimestamp } from 'firebase/firestore';
@@ -25,6 +25,14 @@ export function ContactSection() {
     email: '',
     message: ''
   });
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('jvinicius449@gmail.com');
+    toast({
+      title: "EMAIL COPIADO",
+      description: "O endereço foi copiado para sua área de transferência.",
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,12 +58,11 @@ export function ContactSection() {
         timestamp: serverTimestamp(),
       });
       
-      // Delay visual para simular transmissão
       await new Promise(resolve => setTimeout(resolve, 800));
       
       toast({
         title: "SINAL TRANSMITIDO",
-        description: "Sua mensagem foi enviada com sucesso para o Vini.",
+        description: "Mensagem salva no banco de dados. Para resposta rápida, use o WhatsApp!",
       });
       
       setFormData({ name: '', email: '', message: '' });
@@ -63,7 +70,7 @@ export function ContactSection() {
       toast({
         variant: "destructive",
         title: "ERRO DE CONEXÃO",
-        description: "Não foi possível transmitir os dados para o servidor.",
+        description: "Não foi possível transmitir os dados.",
       });
     } finally {
       setIsSubmitting(false);
@@ -72,7 +79,6 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="relative py-32 px-6 overflow-hidden bg-black">
-      {/* Background Visuals */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(146,20,204,0.1),transparent)]" />
       </div>
@@ -83,12 +89,31 @@ export function ContactSection() {
             <h2 className="font-headline text-6xl md:text-8xl font-black text-white uppercase leading-none italic">
               CONT<span className="text-primary block not-italic glitch-text" data-text="ATO">ATO</span>
             </h2>
-            <p className="font-body text-xl text-white/60 max-w-md">
-              Se interessou pelo meu serviço?<br />
-              Entre em contato comigo a partir das redes sociais ou o e-mail abaixo.
-            </p>
             
-            <div className="flex gap-6">
+            <div className="space-y-4">
+              <p className="font-body text-xl text-white/60 max-w-md">
+                Para um orçamento rápido ou dúvidas, me chame diretamente:
+              </p>
+              
+              <div className="flex flex-col gap-4">
+                <a 
+                  href="https://wa.me/5573981545625" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 bg-[#25D366] text-black px-6 py-4 font-headline font-bold text-xl hover:scale-105 transition-transform"
+                >
+                  <MessageSquare size={24} /> CHAMAR NO WHATSAPP
+                </a>
+                <button 
+                  onClick={handleCopyEmail}
+                  className="flex items-center gap-4 bg-white/10 text-white border-2 border-white/20 px-6 py-4 font-headline font-bold text-xl hover:bg-white/20 transition-all"
+                >
+                  <Copy size={24} /> COPIAR MEU EMAIL
+                </button>
+              </div>
+            </div>
+            
+            <div className="flex gap-6 pt-6">
               {SOCIAL_LINKS.map((social, idx) => (
                 <a 
                   key={idx}
@@ -101,11 +126,6 @@ export function ContactSection() {
                   <social.icon size={24} />
                 </a>
               ))}
-            </div>
-
-            <div className="pt-10 border-t border-white/10 text-xs font-mono text-white/40 uppercase tracking-widest">
-              BASE: SÃO PAULO / REMOTE GLOBAL<br />
-              TIMEZONE: GMT-3
             </div>
           </div>
 
@@ -155,7 +175,6 @@ export function ContactSection() {
         </div>
       </div>
 
-      {/* Footer Text */}
       <div className="mt-40 text-center border-t border-white/10 py-10">
         <p className="font-mono text-xs text-white/30 uppercase tracking-[0.5em]">
           SEM REVOLUÇÃO SEM GLITCH. DESIGNED BY ROSARIO.
