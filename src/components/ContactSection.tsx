@@ -58,6 +58,7 @@ export function ContactSection() {
         timestamp: serverTimestamp(),
       });
       
+      // Simular um tempo de envio visual
       await new Promise(resolve => setTimeout(resolve, 800));
       
       toast({
