@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
 import { ArrowLeft, Play, Search, Smartphone, Tv, Palette, Layers, Monitor } from 'lucide-react';
-import { VIDEO_CATEGORIES, DESIGN_CATEGORIES } from '@/data/portfolio';
+import { VIDEO_CATEGORIES, DESIGN_CATEGORIES, REELS_VIDEOS, FULLSCREEN_VIDEOS } from '@/data/portfolio';
 
 export function VideoGallery() {
   const [exploding, setExploding] = useState<string | null>(null);
@@ -168,16 +168,16 @@ export function VideoGallery() {
             <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#F40FC0] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden flex">
               <div className="relative w-1/2 h-full border-r-4 border-white overflow-hidden">
                 <Image
-                  src={getThumbnailUrl('18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh')}
-                  alt="Reels 01 Peek"
+                  src={getThumbnailUrl(REELS_VIDEOS[0]?.driveId || '18X5gyTexszSYrLRNrIFiY5e9_6qVRAhh')}
+                  alt="Reels Peek"
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
                 />
               </div>
               <div className="relative w-1/2 h-full overflow-hidden">
                 <Image
-                  src={getThumbnailUrl('1BYrQgXSZtPVEQ2iJpEQF6-CBnsaHsBnp')}
-                  alt="Vídeo 01 Peek"
+                  src={getThumbnailUrl(FULLSCREEN_VIDEOS[0]?.driveId || '1BYrQgXSZtPVEQ2iJpEQF6-CBnsaHsBnp')}
+                  alt="Fullscreen Peek"
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
                 />
@@ -208,15 +208,15 @@ export function VideoGallery() {
             <div className="relative border-[12px] border-white bg-black aspect-video shadow-[20px_20px_0px_#9214CC] group-hover:shadow-[25px_25px_0px_#00FFF9] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-all duration-500 overflow-hidden flex">
               <div className="relative w-1/2 h-full border-r-4 border-white overflow-hidden">
                 <Image
-                  src={getThumbnailUrl('1RliV-KjoGbxjiC0EjXQT3-KEeusR93gg')}
-                  alt="Branding Peek"
+                  src={getThumbnailUrl(DESIGN_CATEGORIES[0]?.items[0]?.driveId || '1RliV-KjoGbxjiC0EjXQT3-KEeusR93gg')}
+                  alt="Design Peek"
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
                 />
               </div>
               <div className="relative w-1/2 h-full overflow-hidden">
                 <Image
-                  src={getThumbnailUrl('14R0tVS73EJvq2sHc5lQhh4Uig2FGr1tp')}
+                  src={getThumbnailUrl(DESIGN_CATEGORIES[2]?.items[0]?.driveId || '14R0tVS73EJvq2sHc5lQhh4Uig2FGr1tp')}
                   alt="Banner Peek"
                   fill
                   className="object-cover grayscale group-hover:grayscale-0 contrast-125 brightness-50 group-hover:brightness-100 transition-all duration-700"
